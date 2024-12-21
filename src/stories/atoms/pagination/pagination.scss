@@ -1,0 +1,58 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  margin-top: 50px;
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 8px;
+  }
+
+  .page-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .page-item.active {
+    background-color: #e5e7eb;
+
+    .page-link {
+      color: #000;
+      font-weight: bold;
+    }
+
+    .pagination .dots {
+      cursor: default;
+      color: #999;
+    }
+  }
+}
+
+.page-link {
+  text-decoration: none;
+  color: #555;
+  font-size: 16px;
+}
+
+.pagination button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+}
+
+.pagination button:focus {
+  outline: none;
+}
