@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import { MSWComponent } from "./utils/MswRunner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,6 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <MSWComponent />
       <body className={NotoSans.className}>{children}</body>
     </html>
   );
