@@ -1,4 +1,6 @@
 /** @jsxImportSource @emotion/react */
+"use client";
+import { useScrollStore } from "@/app/store/common";
 import { css } from "@emotion/react";
 
 type propsType = {
@@ -14,12 +16,13 @@ const StatisticsList = ({
   wrap,
   direction = "row",
 }: propsType) => {
+  const scroll = useScrollStore().scroll;
   return (
     <ul css={UlStyle(wrap, direction)}>
       {list.map((item, index) => (
         <li key={index} css={LiStyle(width)}>
           <span>{item.label}</span>
-          <p>{item.value}+</p>
+          <p className={scroll > 500 ? "active" : ""}>{item.value}+</p>
         </li>
       ))}
     </ul>
@@ -52,9 +55,18 @@ const LiStyle = (width: string | number) => css`
     font-weight: bold;
     font-stretch: normal;
     line-height: 80.13px;
-    color: rgb(255, 255, 255);
     letter-spacing: normal;
     word-break: keep-all;
+    color: #12141700;
+    background: linear-gradient(to right, #fff, #fff) no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 0% 100%;
+    transition: background-size cubic-bezier(0.1, 0.5, 0.5, 1) 3.3s;
+
+    &.active {
+      background-size: 100% 100%;
+    }
   }
 `;
 
