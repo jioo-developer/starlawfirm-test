@@ -5,8 +5,8 @@ import { useScrollStore } from "../store/common";
 
 const style = css`
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 35px;
+  right: 30px;
   width: 50px;
   height: 50px;
   background-color: #007bff;
