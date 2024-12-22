@@ -1,16 +1,35 @@
 import "@/stories/atoms/pagination/pagination.scss";
-const Pagination = () => {
+
+type propsType = {
+  page: number;
+  handler: (page: number) => void;
+};
+
+const Pagination = ({ page, handler }: propsType) => {
   return (
     <div className="pagination">
-      <button className="prev">&lt;</button>
+      <button className="prev" style={{ opacity: page === 1 ? "0.2" : 1 }}>
+        &lt;
+      </button>
       <ul>
-        <li className="page-item  active">1</li>
-        <li className="page-item">2</li>
-        <li className="page-item">3</li>
-        <li className="page-item">4</li>
-        <li className="page-item">5</li>
-        <li className="page-item">6</li>
-        <li className="page-item">7</li>
+        {[1, 2, 3, 4, 5, 6, 7].map((item, index) => {
+          return (
+            <li
+              key={index}
+              className={item === page ? "page-item active" : "page-item"}
+            >
+              <button
+                onClick={() => {
+                  if (item === 1 || item === 2) {
+                    handler(item);
+                  }
+                }}
+              >
+                {item}
+              </button>
+            </li>
+          );
+        })}
         <li className="page-item dots">...</li>
         <li className="page-item">
           <a href="#" className="page-link">
@@ -18,7 +37,9 @@ const Pagination = () => {
           </a>
         </li>
       </ul>
-      <button className="next">&gt;</button>
+      <button className="next" style={{ opacity: page === 2 ? "0.2" : 1 }}>
+        &gt;
+      </button>
     </div>
   );
 };

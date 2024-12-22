@@ -13,6 +13,20 @@ const articleStyle = ({ width, height, radius }: propsType) => css`
   width: 100%;
   margin-bottom: 80px;
   justify-content: space-between;
+  cursor: pointer;
+
+  &:hover {
+    .notice_title {
+      color: #007bff;
+    }
+    figure {
+      position: relative;
+      bottom: 5px;
+      transition-duration: 0.5s;
+      box-shadow: 2px 15px 20px rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
+    }
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -52,17 +66,25 @@ const articleStyle = ({ width, height, radius }: propsType) => css`
 interface newType extends propsType {
   items: { type: string; title: string; subTitle: string; date: string };
   index: number;
+  page: number;
 }
 
-const RowNoticeArticle = ({ items, index, width, height, radius }: newType) => {
+const RowNoticeArticle = ({
+  items,
+  index,
+  width,
+  height,
+  radius,
+  page,
+}: newType) => {
   return (
     <article css={articleStyle({ width, height, radius })}>
       <figure>
         <Image
-          src={`/images/article_image${index + 1}.jpg`}
+          src={`/images/article_image${(index + 1) * page}.jpg`}
           width={width}
           height={height}
-          alt="아티클1"
+          alt={`아티클-${index}`}
         />
       </figure>
       <figcaption>
