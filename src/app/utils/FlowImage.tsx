@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
+"use client";
 import { css } from "@emotion/react";
-const flow = () => {
+import { useInView } from "react-intersection-observer";
+const Flow = () => {
   const flowWrap = css`
     position: absolute;
     bottom: 0;
@@ -28,7 +30,7 @@ const flow = () => {
         opacity: 0;
         fill: url(#gradient);
         transform: scale(1.01);
-        animation: fill 2s linear 1s forwards;
+        animation: fill 2s linear 0.2s forwards;
       }
 
       .overlay-border {
@@ -50,9 +52,10 @@ const flow = () => {
       }
     }
   `;
+  const { ref, inView } = useInView({ threshold: 0.001 });
   return (
-    <>
-      <div css={flowWrap}>
+    <div css={flowWrap} ref={ref}>
+      {inView && (
         <svg
           viewBox="0 0 500 500"
           xmlns="https://www.w3.org/2000/svg"
@@ -79,9 +82,9 @@ const flow = () => {
             ></path>
           </g>
         </svg>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 
-export default flow;
+export default Flow;
