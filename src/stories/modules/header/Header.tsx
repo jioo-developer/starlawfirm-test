@@ -3,14 +3,17 @@
 import { css } from "@emotion/react";
 import Link from "next/link";
 import Image from "next/image";
+import useScroll from "@/app/hooks/useScroll";
 
 const headerStyle = css`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 1000;
   width: 100%;
   height: 60px;
+  transition: backdrop-filter 50ms ease-in-out;
+  border-bottom: none;
 `;
 
 const headerInStyle = css`
@@ -36,12 +39,27 @@ const navStyle = css`
     height: 98%;
 
     a {
-      color: #fff;
-      font-weight: 500;
+      padding: 12px 10px;
       font-size: 14px;
+      color: #fff;
+      border-radius: 8px;
+      border: 0;
+      cursor: pointer;
+      background-color: transparent;
       text-decoration: none;
+      text-align: left;
+
+      &:hover {
+        background: rgba(217, 217, 255, 0.15);
+      }
     }
   }
+`;
+
+const activeHeader = css`
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(30px);
+}
 `;
 
 const navInfo = [
@@ -72,9 +90,10 @@ const navInfo = [
 ];
 
 const Header = () => {
+  const scroll = useScroll().scroll;
   return (
     <>
-      <header css={headerStyle}>
+      <header css={scroll > 1 ? [headerStyle, activeHeader] : headerStyle}>
         <div className="in_header" css={headerInStyle}>
           <Link href="/">
             <Image
