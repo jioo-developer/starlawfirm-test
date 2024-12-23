@@ -1,6 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-
 import { overlapHandler } from "@/app/handler/common";
 import { useScrollStore } from "@/app/store/common";
 import { Button } from "@/stories/atoms/Button";
@@ -25,10 +22,6 @@ const newsList = [
     date: "2024.12.10",
   },
 ];
-
-const active = css`
-  opacity: 0.3;
-`;
 
 type RefArrayType = {
   topvalue: number;
@@ -82,27 +75,33 @@ const RecommendNotice = () => {
         <div className="left_article">
           {newsList.map((item, index) => {
             return (
-              <div key={index} css={indexState - 1 !== index && active}>
-                <NoticeArticle
-                  items={item}
-                  index={index}
-                  width={530}
-                  height={340}
-                  radius={16}
-                  handler={handler}
-                />
-              </div>
+              <NoticeArticle
+                items={item}
+                index={index}
+                key={index}
+                width={530}
+                height={340}
+                radius={16}
+                handler={handler}
+                active={indexState}
+              />
             );
           })}
         </div>
         <div className="text_wrap">
           <h1 className="title">
-            {indexState === 0
+            {indexState === 0 || newsList[indexState - 1].title === undefined
               ? "이번주 토스's"
               : newsList[indexState - 1].title}
           </h1>
           <p className="text">금주에 추천드리는 토스 소식입니다!</p>
-          <Button theme="primary" width={116} height={40} fontSize={15}>
+          <Button
+            theme="primary"
+            width={116}
+            height={40}
+            fontSize={15}
+            aria-label="새로운 소식 페이지로 이동"
+          >
             소식 보러가기
           </Button>
         </div>

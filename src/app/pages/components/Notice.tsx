@@ -33,8 +33,8 @@ const Notice = () => {
         params: { params },
       });
       setData(res.data.data);
-    } catch (error) {
-      console.error("데이터를 가져오지 못했음.", error);
+    } catch {
+      window.alert("데이터를 가져오지 못했습니다.");
     }
   };
 
@@ -52,7 +52,7 @@ const Notice = () => {
   return (
     <section className="section07" ref={ref}>
       <div className={inView ? "in_wrap active" : "in_wrap"}>
-        <h3>토스 새소식</h3>
+        <p className="notice_title">토스 새소식</p>
         <section>
           {NoticeData.length > 0 ? (
             NoticeData.map((item, index) => {
