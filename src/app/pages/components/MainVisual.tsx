@@ -10,6 +10,7 @@ const MainVisual = () => {
 
   return (
     <section className="section01 background">
+      <div className="cover"></div>
       <div className="main_visual_title">
         <div className="sec_top">
           <span className={firstRender ? "active before" : "before"}>

@@ -20,7 +20,7 @@ const Pagination = ({ page, handler }: propsType) => {
             >
               <button
                 onClick={() => {
-                  if (item === 1 || item === 2) {
+                  if (item < 3) {
                     handler(item);
                   }
                 }}
