@@ -24,3 +24,13 @@ export const throttle = <T extends unknown[]>(
     }
   };
 };
+
+export const overlapHandler = <T>(array: T[]): T[] => {
+  return array.filter((value, idx, arr) => {
+    return (
+      arr.findIndex(
+        (item) => JSON.stringify(item) === JSON.stringify(value)
+      ) === idx
+    );
+  });
+};
