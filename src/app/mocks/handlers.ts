@@ -1,5 +1,5 @@
 import { http, HttpResponse } from "msw";
-const NoticeData = [
+export const NoticeData = [
   {
     type: "새소식",
     title: "토스, ‘머니북’ 수익금 3억 원 금융소외층에 기부",

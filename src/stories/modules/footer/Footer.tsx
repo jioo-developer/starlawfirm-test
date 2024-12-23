@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-column">
-          <h3>서비스</h3>
+          <p>서비스</p>
           <ul>
             <li>공지사항</li>
             <li>자주 묻는 질문</li>
@@ -18,7 +18,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-column">
-          <h3>회사</h3>
+          <p>회사</p>
           <ul>
             <li>회사 소개</li>
             <li>토스페이먼츠</li>
@@ -35,7 +35,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-column">
-          <h3>문의</h3>
+          <p>문의</p>
           <ul>
             <li>사업 제휴</li>
             <li>토스쇼핑 입점문의</li>
@@ -46,7 +46,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-column">
-          <h3>고객센터</h3>
+          <p>고객센터</p>
           <ul>
             <li>전화: 1599-4905 (24시간 연중무휴)</li>
             <li>이메일(고객전용): support@toss.im</li>
