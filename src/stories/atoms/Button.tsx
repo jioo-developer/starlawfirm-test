@@ -49,8 +49,8 @@ const themes = {
     color: #fff;
   `,
   primary: css`
-    background: #2a96ee;
-    color: #fff;
+    background: #1a74c3;
+    color: #fefefe;
   `,
 };
 

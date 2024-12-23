@@ -81,7 +81,7 @@ const RowNoticeArticle = ({
     <article css={articleStyle({ width, height, radius })}>
       <figure>
         <Image
-          src={`/images/article_image${(index + 1) * page}.jpg`}
+          src={`/images/article_image${(index + 1) * page}.webp`}
           width={width}
           height={height}
           alt={`아티클-${index}`}
@@ -89,7 +89,7 @@ const RowNoticeArticle = ({
       </figure>
       <figcaption>
         <span className="notice_type">{items.type}</span>
-        <p className="notice_title">{items.title}</p>
+        <p className="notice_sub_title">{items.title}</p>
         <p
           className="sub_title"
           css={{ fontSize: 20, fontWeight: 500, marginBottom: 20 }}

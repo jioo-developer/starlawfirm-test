@@ -127,7 +127,7 @@ const background = (index: number) => css`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(/images/sec05_image${index + 1}.jpg);
+  background: url(/images/sec05_image${index + 1}.webp);
   background-repeat: no repeat;
   background-size: cover;
   transition: background-image 0.3s;
@@ -171,22 +171,26 @@ const GridBox = ({ width, height, items, index }: propsType) => {
           <span>
             {items.title === "토스코어"
               ? "토스는 왜 금융을 바꾸려고 하는가?"
-              : items.title + "홈페이지 바로가기"}{" "}
+              : items.title + "홈페이지 바로가기"}
           </span>
         </div>
 
         <button
-          className="more_btn"
+          className="more_btn text-blind"
           onClick={() => {
             setToggle(!toggle);
           }}
-        ></button>
+        >
+          more
+        </button>
         <button
-          className="close_btn"
+          className="close_btn text-blind"
           onClick={() => {
             setToggle(!toggle);
           }}
-        ></button>
+        >
+          close
+        </button>
       </div>
     </article>
   );

@@ -7,21 +7,27 @@ type propsType = {
   width: number;
   height: number;
   radius?: number;
+  active: number;
+  index: number;
 };
 
-const articleStyle = ({ width, height, radius }: propsType) => css`
+const articleStyle = ({
+  width,
+  height,
+  radius,
+  active,
+  index,
+}: propsType) => css`
   width: ${width}px;
   margin-bottom: 80px;
 
-  &:last-child {
-    margin-bottom: 0;
-  }
   figure {
     width: ${width}px;
     height: ${height}px;
     border-radius: ${radius ? radius : 0}px;
     overflow: hidden;
     margin-bottom: 20px;
+    opacity: ${active - 1 !== index ? "0.3" : "1"};
   }
 
   figcaption {
@@ -52,6 +58,7 @@ interface newType extends propsType {
   items: { type: string; title: string; date: string };
   index: number;
   handler: (object: { topvalue: number; heightvalue: number }) => void;
+  active: number;
 }
 
 const NoticeArticle = ({
@@ -61,6 +68,7 @@ const NoticeArticle = ({
   height,
   radius,
   handler,
+  active,
 }: newType) => {
   const ArticleRef = useRef<HTMLElement | null>(null);
 
@@ -74,10 +82,13 @@ const NoticeArticle = ({
   }, [ArticleRef]);
 
   return (
-    <article css={articleStyle({ width, height, radius })} ref={ArticleRef}>
+    <article
+      css={articleStyle({ width, height, radius, active, index })}
+      ref={ArticleRef}
+    >
       <figure>
         <Image
-          src={`/images/article_image${index + 1}.jpg`}
+          src={`/images/article_image${index + 1}.webp`}
           width={width}
           height={height}
           alt="아티클1"
