@@ -1,14 +1,13 @@
-import { useScrollStore } from "@/app/store/common";
 import HistoryMap from "@/stories/modules/historyMap/HistoryMap";
+import { showStore } from "@/app/store/common";
 
 const History = () => {
-  const scroll = useScrollStore().scroll;
+  const show = showStore().toggle;
+
+  const sectionStyle = !show ? { background: "#121417" } : {};
 
   return (
-    <section
-      className="section04"
-      style={{ background: scroll >= 2600 ? "#121417" : "" }}
-    >
+    <section className="section04" style={sectionStyle}>
       <div className="in_wrap">
         <p className="title">
           토스팀은 오늘도

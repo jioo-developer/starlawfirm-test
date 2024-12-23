@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import Image from "next/image";
 import { css } from "@emotion/react";
+import { useEffect, useRef } from "react";
 
 type propsType = {
   width: number;
@@ -50,11 +51,30 @@ const articleStyle = ({ width, height, radius }: propsType) => css`
 interface newType extends propsType {
   items: { type: string; title: string; date: string };
   index: number;
+  handler: (object: { topvalue: number; heightvalue: number }) => void;
 }
 
-const NoticeArticle = ({ items, index, width, height, radius }: newType) => {
+const NoticeArticle = ({
+  items,
+  index,
+  width,
+  height,
+  radius,
+  handler,
+}: newType) => {
+  const ArticleRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (ArticleRef && ArticleRef.current) {
+      const offsetTop = ArticleRef.current.offsetTop;
+      const offsetHeight = ArticleRef.current.offsetHeight;
+      const object = { topvalue: offsetTop, heightvalue: offsetHeight };
+      handler(object);
+    }
+  }, [ArticleRef]);
+
   return (
-    <article css={articleStyle({ width, height, radius })}>
+    <article css={articleStyle({ width, height, radius })} ref={ArticleRef}>
       <figure>
         <Image
           src={`/images/article_image${index + 1}.jpg`}

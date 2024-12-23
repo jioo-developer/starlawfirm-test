@@ -1,49 +1,57 @@
-import { useScrollStore } from "@/app/store/common";
-import { useEffect, useRef } from "react";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import { showStore, useScrollStore } from "@/app/store/common";
+import { useEffect, useRef, useState } from "react";
 
 const TeamMission = () => {
   const scroll = useScrollStore().scroll;
-
+  const [opacity, setOpacity] = useState(1);
   const thirdSectionRef = useRef<HTMLElement | null>(null);
-  const FourthSectionRef = useRef<HTMLElement | null>(null);
+  const coverRef = useRef<HTMLDivElement | null>(null);
 
-  const opacityRef = useRef(1); // 리렌더링을 최소화하기 위해 useRef 사용
+  const show = showStore().toggle;
+
+  const opaticyValue = css`
+    opacity: ${opacity};
+  `;
 
   useEffect(() => {
-    if (scroll > 1800 && thirdSectionRef.current && FourthSectionRef.current) {
-      const section03Rect = thirdSectionRef.current.getBoundingClientRect();
-      const section04Rect = FourthSectionRef.current.getBoundingClientRect();
+    if (thirdSectionRef.current && coverRef.current) {
+      const sectionTop = thirdSectionRef.current.offsetTop;
+      // .section03의 시작 위치 (뷰포트 기준)
+      const sectionHeight = thirdSectionRef.current.offsetHeight;
+      // .section03의 전체 높이
+      const coverHeight = coverRef.current.offsetHeight;
+      const coverBottom = 900 + coverHeight;
 
-      const windowHeight = window.innerHeight;
-
-      // section03에서 opacity 감소
-      if (section03Rect.top <= windowHeight && section03Rect.bottom >= 0) {
-        const scrollProgress =
-          1 - Math.min(1, Math.max(0, section03Rect.top / windowHeight));
-        opacityRef.current = 1 - scrollProgress; // opacity 업데이트
+      if (scroll >= sectionTop && scroll < coverBottom) {
+        showStore.setState({ toggle: true });
+      } else if (scroll >= coverBottom) {
+        showStore.setState({ toggle: false });
+      } else {
+        showStore.setState({ toggle: false });
       }
-
-      // section04에서 opacity 복원
-      if (section04Rect.top <= windowHeight && section04Rect.bottom >= 0) {
-        const scrollProgress = Math.min(
-          1,
-          Math.max(0, 1 - section04Rect.top / (windowHeight / 2))
-        );
-        opacityRef.current = scrollProgress; // 점진적으로 opacity 증가
+      if (scroll > sectionTop) {
+        const scrollInSection = scroll - sectionTop; // .section03 내부에서 스크롤된 거리
+        const scrollPercent = (scrollInSection / sectionHeight) * 100; // 스크롤 퍼센트 계산
+        const reversedPercent = 100 - scrollPercent;
+        const result = Math.round(reversedPercent); // 소수점 반올림
+        if (result <= 30) {
+          setOpacity(1);
+        } else {
+          setOpacity(result / 100);
+        }
+      } else {
+        setOpacity(1);
       }
     }
   }, [scroll]);
 
   return (
     <section className="section03" ref={thirdSectionRef}>
-      <div
-        className="cover"
-        style={{
-          opacity: opacityRef.current,
-        }}
-      ></div>
+      <div className="cover" css={opaticyValue} ref={coverRef}></div>
       <div className="in_wrap">
-        {scroll > 1800 && scroll < 2600 && <div className="background"></div>}
+        {show && <div className="background"></div>}
         <div className="team_mission">
           <span className="mission_title">Team Mission</span>
           <p className="mission_text">
