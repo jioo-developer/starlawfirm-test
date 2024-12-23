@@ -4,11 +4,47 @@
   align-items: center;
   width: 100%;
   height: calc(100vh + 1px);
+  position: relative;
 
   &.background {
     background: url("/images/main_background.jpg");
     background-position: center center;
     background-size: cover;
+  }
+
+  .cover {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh + 1px);
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background: rgba(26, 30, 36, 0.65);
+    animation: image-scan 3.7s 1.8s ease-in-out forwards reverse;
+  }
+
+  @keyframes image-scan {
+    0% {
+      height: 0%;
+      opacity: 1;
+      background: rgba(0, 0, 0, 1);
+    }
+
+    50% {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    88% {
+      height: 100%;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    100% {
+      background: rgba(0, 0, 0, 0.1);
+      height: 100%;
+      opacity: 0;
+    }
   }
 }
 
@@ -28,6 +64,7 @@
   flex-direction: column;
   height: 180px;
   overflow: hidden;
+  z-index: 300;
 
   .sec_top {
     display: flex;
@@ -134,17 +171,17 @@
 .section03 {
   display: flex;
   justify-content: center;
-  height: 150vh;
+  height: 200vh;
   position: relative;
-  background-color: #121417;
 
   .cover {
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 100%;
-    background: rgb(18, 20, 23);
+    height: 2200px;
+    background: #121417;
+    z-index: 500;
   }
 
   .in_wrap {
@@ -179,6 +216,7 @@
       -webkit-backdrop-filter: blur(30px);
       backdrop-filter: blur(30px);
       box-sizing: border-box;
+      z-index: 600;
       .mission_title {
         display: block;
         margin-bottom: 20px;
@@ -293,8 +331,9 @@
     width: 1048px;
     position: relative;
     padding-top: 180px;
+    gap: 0 50px;
 
-    article {
+    .left_article {
       display: flex;
       flex-direction: column;
     }
@@ -302,7 +341,7 @@
     .text_wrap {
       position: sticky;
       width: 502px;
-      height: 243px;
+      height: 350px;
       top: 180px;
       right: 0;
       display: flex;
@@ -311,7 +350,7 @@
       justify-content: flex-start;
 
       .title {
-        font-size: 44px;
+        font-size: 34px;
         font-weight: 600;
         line-height: 1.4;
         text-align: center;
