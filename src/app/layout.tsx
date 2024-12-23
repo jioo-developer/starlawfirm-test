@@ -12,6 +12,7 @@ const NotoSans = Noto_Sans_KR({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
   display: "swap",
+  preload: true,
 });
 
 export default function RootLayout({
