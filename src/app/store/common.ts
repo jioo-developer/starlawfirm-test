@@ -8,3 +8,7 @@ export const useScrollStore = create(() => ({
 export const useMswReady = create(() => ({
   loading: false,
 }));
+
+export const showStore = create(() => ({
+  toggle: false,
+}));
