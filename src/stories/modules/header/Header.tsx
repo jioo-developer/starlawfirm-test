@@ -4,7 +4,8 @@ import { css } from "@emotion/react";
 import Link from "next/link";
 import useScroll from "@/app/hooks/useScroll";
 import useMediaQuery from "@/app/hooks/jseMediaQuery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const headerStyle = css`
   position: fixed;
@@ -53,10 +54,6 @@ const headerInStyle = css`
     align-items: center;
     width: 100px;
     height: 60px;
-    background: url(/images/logo.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
 
     img {
       margin-left: 6.8px;
@@ -192,6 +189,13 @@ const Header = () => {
   const scroll = useScroll().scroll;
   const isMobile = useMediaQuery("(max-width: 760px)");
   const [navToggle, setToggle] = useState(false);
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timeout);
+  }, []);
   return (
     <>
       <header
@@ -199,7 +203,17 @@ const Header = () => {
         className={navToggle ? "isMobile" : ""}
       >
         <div className="in_header" css={headerInStyle}>
-          <div className="logo"></div>
+          {loaded && (
+            <Link href="/" className="logo" rel="preload">
+              <Image
+                width={100}
+                height={50}
+                src={"/images/Toss_Logo.webp"}
+                alt="로고"
+                priority
+              />
+            </Link>
+          )}
           {isMobile && (
             <button css={mobileMenu} onClick={() => setToggle(!navToggle)}>
               <div className="menu-icon">
