@@ -190,7 +190,7 @@ const Header = () => {
         className={navToggle ? "isMobile" : ""}
       >
         <div className="in_header" css={headerInStyle}>
-          <Link href="/" className="logo">
+          <Link href="/" className="logo" rel="preload">
             <Image
               width={65}
               height={20}
