@@ -53,7 +53,7 @@ const secTopStyle = css`
       line-height 0.3s ease;
 
     @media all and (max-width: 760px) {
-      font-size: 8vw;
+      font-size: 7vw;
       br {
         display: none;
       }
