@@ -53,6 +53,11 @@ const headerInStyle = css`
     justify-content: center;
     align-items: center;
     height: 60px;
+
+    img {
+      margin-left: 6.8px;
+      transform: scale(1.3);
+    }
   }
 `;
 
@@ -192,11 +197,10 @@ const Header = () => {
         <div className="in_header" css={headerInStyle}>
           <Link href="/" className="logo" rel="preload">
             <Image
-              width={65}
-              height={20}
-              src={"/images/logo.svg"}
+              width={100}
+              height={50}
+              src={"/images/Toss_Logo.webp"}
               alt="로고"
-              style={{ marginLeft: 6.8 }}
               priority
             />
           </Link>
