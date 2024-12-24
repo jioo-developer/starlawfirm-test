@@ -391,6 +391,11 @@
     padding-top: 180px;
     gap: 0 50px;
 
+    @media all and (max-width: 760px) {
+      width: 90%;
+      padding-top: 0;
+    }
+
     .left_article {
       display: flex;
       flex-direction: column;
@@ -406,6 +411,10 @@
       align-items: center;
       flex-direction: column;
       justify-content: flex-start;
+
+      @media all and (max-width: 760px) {
+        display: none;
+      }
 
       .title {
         font-size: 2.125rem;

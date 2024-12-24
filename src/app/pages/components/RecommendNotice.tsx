@@ -1,4 +1,5 @@
 import { overlapHandler } from "@/app/handler/common";
+import useMediaQuery from "@/app/hooks/jseMediaQuery";
 import { useScrollStore } from "@/app/store/common";
 import { Button } from "@/stories/atoms/Button";
 import NoticeArticle from "@/stories/atoms/NoticeArticle/NoticeArticle";
@@ -41,16 +42,20 @@ const RecommendNotice = () => {
 
   const [indexState, setIndex] = useState(0);
 
+  const isMobile = useMediaQuery("(max-width: 760px)");
+
   useEffect(() => {
     if (sixSectionRef.current) {
       const sectionTop = sixSectionRef.current.offsetTop;
       const sectionHeight = sixSectionRef.current.offsetHeight;
       if (scroll > sectionTop) {
         const scrollInSection = scroll - sectionTop;
+        const offset = isMobile ? 180 : 0;
+
         for (let idx = 1; idx < refValueArray.length - 1; idx++) {
           if (
-            scrollInSection > refValueArray[idx].topvalue &&
-            scrollInSection < refValueArray[idx + 1].topvalue
+            scrollInSection > refValueArray[idx].topvalue - offset &&
+            scrollInSection < refValueArray[idx + 1].topvalue - offset
           ) {
             setIndex(idx);
             break;
@@ -58,7 +63,8 @@ const RecommendNotice = () => {
         }
 
         if (
-          scrollInSection > refValueArray[refValueArray.length - 1].topvalue &&
+          scrollInSection >
+            refValueArray[refValueArray.length - 1].topvalue - offset &&
           scrollInSection < sectionHeight
         ) {
           setIndex(refValueArray.length - 1);

@@ -21,6 +21,10 @@ const articleStyle = ({
   width: ${width}px;
   margin-bottom: 80px;
 
+  @media all and (max-width: 760px) {
+    width: 100%;
+  }
+
   figure {
     width: ${width}px;
     height: ${height}px;
@@ -28,6 +32,14 @@ const articleStyle = ({
     overflow: hidden;
     margin-bottom: 20px;
     opacity: ${active - 1 !== index ? "0.3" : "1"};
+
+    @media all and (max-width: 760px) {
+      &,
+      & > img {
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 
   figcaption {
