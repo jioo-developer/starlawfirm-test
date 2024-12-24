@@ -1,4 +1,4 @@
-import { overlapHandler } from "@/app/handler/common";
+import { overlapHandler, throttle } from "@/app/handler/common";
 import { useScrollStore } from "@/app/store/common";
 import { Button } from "@/stories/atoms/Button";
 import NoticeArticle from "@/stories/atoms/NoticeArticle/NoticeArticle";
@@ -42,27 +42,21 @@ const RecommendNotice = () => {
     });
   };
 
-  const [indexState, setIndex] = useState<number | undefined>(undefined);
+  const [indexState, setIndex] = useState<number>(0);
 
-  useEffect(() => {
-    console.log(refValueArray);
-  }, [refValueArray]);
-
-  useEffect(() => {
-    console.log(indexState);
-  }, [indexState]);
-
-  useEffect(() => {
+  const scrollHandler = () => {
     if (sixSectionRef.current) {
       const sectionTop = sixSectionRef.current.offsetTop;
       const sectionHeight = sixSectionRef.current.offsetHeight;
 
-      if (scroll > sectionTop) {
+      if (scroll > sectionTop && scroll < sectionTop + sectionHeight) {
         const scrollInSection = scroll - sectionTop;
-        const scrollPercent = (scrollInSection / sectionHeight) * 100; // 스크롤 퍼센트 계산
-        const result = Math.round(scrollPercent); // 소수점 반올림
+        const scrollPercent = (scrollInSection / sectionHeight) * 100;
+        const result = Math.round(scrollPercent);
+        const lastValue = refValueArray[refValueArray.length - 1].topvalue;
+
         if (result < 100) {
-          for (let idx = 0; idx < refValueArray.length; idx++) {
+          for (let idx = 0; idx < refValueArray.length - 1; idx++) {
             if (
               scrollInSection > refValueArray[idx].topvalue &&
               scrollInSection < refValueArray[idx + 1].topvalue
@@ -71,11 +65,19 @@ const RecommendNotice = () => {
               break;
             }
           }
+
+          if (scrollInSection >= lastValue) {
+            setIndex(refValueArray.length - 1);
+          }
         }
-      } else {
-        setIndex(undefined);
       }
     }
+  };
+
+  const throttleScroll = throttle(scrollHandler, 250);
+
+  useEffect(() => {
+    throttleScroll();
   }, [scroll]);
 
   return (
@@ -92,16 +94,16 @@ const RecommendNotice = () => {
                 height={340}
                 radius={16}
                 handler={handler}
-                active={
-                  typeof indexState !== "undefined" ? indexState : undefined
-                }
+                active={indexState}
               />
             );
           })}
         </div>
         <div className="text_wrap">
           <h1 className="title">
-            {!indexState ? "이번주 토스's" : newsList[indexState].title}
+            {newsList[indexState].title
+              ? newsList[indexState].title
+              : "이번주 토스's"}
           </h1>
           <p className="text">금주에 추천드리는 토스 소식입니다!</p>
           <Button

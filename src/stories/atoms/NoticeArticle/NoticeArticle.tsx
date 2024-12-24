@@ -8,10 +8,17 @@ type stylePropsType = {
   width: number;
   height: number;
   radius?: number;
-  active?: number | undefined;
+  active?: number;
+  index: number;
 };
 
-const articleStyle = ({ width, height, radius, active }: stylePropsType) => css`
+const articleStyle = ({
+  width,
+  height,
+  radius,
+  active,
+  index,
+}: stylePropsType) => css`
   width: ${width}px;
   margin-bottom: 80px;
 
@@ -25,7 +32,7 @@ const articleStyle = ({ width, height, radius, active }: stylePropsType) => css`
     border-radius: ${radius ? radius : 0}px;
     overflow: hidden;
     margin-bottom: 20px;
-    opacity: ${active ? "1" : 0.3};
+    opacity: ${active === index ? "1" : "0.3"};
 
     @media all and (max-width: 760px) {
       &,
@@ -64,7 +71,7 @@ interface newType extends stylePropsType {
   items: { type: string; title: string; date: string };
   index: number;
   handler: (object: { topvalue: number; heightvalue: number }) => void;
-  active?: number | undefined;
+  active?: number;
 }
 
 const NoticeArticle = ({
@@ -100,7 +107,7 @@ const NoticeArticle = ({
 
   return (
     <article
-      css={articleStyle({ width, height, radius, active })}
+      css={articleStyle({ width, height, radius, active, index })}
       ref={ArticleRef}
     >
       <figure>
