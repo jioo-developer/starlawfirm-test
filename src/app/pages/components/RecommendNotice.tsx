@@ -4,7 +4,7 @@ import { Button } from "@/stories/atoms/Button";
 import NoticeArticle from "@/stories/atoms/NoticeArticle/NoticeArticle";
 import { useEffect, useRef, useState } from "react";
 
-const newsList = [
+export const newsList = [
   {
     type: "새소식",
     title: "토스, 3분기 연결 영업수익 5,021억 원",

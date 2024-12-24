@@ -40,12 +40,12 @@ export const Button = ({
 const themes = {
   white: css`
     background: transparent;
-    color: var(--mainTextcolor);
+    color: #000;
     border: 1px solid #d1d1d1;
     box-sizing: border-box;
   `,
   success: css`
-    background: var(--pointTextcolor);
+    background: #2ec998;
     color: #fff;
   `,
   primary: css`

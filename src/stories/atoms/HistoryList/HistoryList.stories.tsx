@@ -1,7 +1,7 @@
 import React from "react";
-import { StoryFn } from "@storybook/react";
 import HistoryList from "./HistoryList";
 import { historyDataType } from "./historyData";
+import "@/app/globals.css";
 
 export default {
   title: "Components/HistoryList",
@@ -10,22 +10,20 @@ export default {
   argTypes: {
     selectYear: { action: "clicked" },
   },
-};
-
-type PropsType = {
-  yearState: historyDataType;
-  selectYear: (year: number) => void;
-};
-
-const Template: StoryFn<PropsType> = (args) => <HistoryList {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  yearState: [
-    { year: 2024, history: [{ date: "2024-01-01", text: "New Year's Day" }] },
-  ],
-  selectYear: (year: number) => {
-    console.log(`Year selected: ${year}`);
+  args: {
+    yearState: [
+      { year: 2024, history: [{ date: "2024-01-01", text: "New Year's Day" }] },
+    ],
   },
+};
+
+export const Default = {
+  render: (args: {
+    yearState: historyDataType;
+    selectYear: (year: number) => void;
+  }) => (
+    <div style={{ padding: "70px 70px 70px 150px", background: "#d9d9d9" }}>
+      <HistoryList {...args} />
+    </div>
+  ),
 };

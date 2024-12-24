@@ -57,7 +57,7 @@ const LiStyle = (width: string | number) => css`
     line-height: 80.13px;
     letter-spacing: normal;
     word-break: keep-all;
-    color: #12141700;
+    color: #1214170;
     background: linear-gradient(to right, #fff, #fff) no-repeat;
     -webkit-background-clip: text;
     background-clip: text;

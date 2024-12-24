@@ -1,5 +1,4 @@
 import React from "react";
-import { StoryFn } from "@storybook/react";
 import HistoryMap from "./HistoryMap";
 
 export default {
@@ -8,8 +7,10 @@ export default {
   tags: ["autodocs"],
 };
 
-const Template: StoryFn = () => <HistoryMap />;
-
-export const Default = Template.bind({});
-
-Default.args = {};
+export const Default = {
+  render: () => (
+    <div style={{ padding: "70px 70px 70px 150px", background: "#d9d9d9" }}>
+      <HistoryMap />
+    </div>
+  ),
+};

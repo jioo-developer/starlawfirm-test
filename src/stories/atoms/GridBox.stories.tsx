@@ -1,11 +1,21 @@
-import React from "react";
 import GridBox from "./GridBox";
-import { StoryFn } from "@storybook/react";
+import "@/app/globals.css";
+import { officeList } from "@/app/pages/components/Corporation";
 
 export default {
   title: "Components/GridBox",
   component: GridBox,
   tags: ["autodocs"],
+  args: {
+    width: 300,
+    height: 600,
+    index: 0,
+    items: {
+      title: officeList[0].title,
+      introduce: officeList[0].introduce,
+      hiddenText: officeList[0].hiddenText,
+    },
+  },
   argTypes: {
     width: {
       control: { type: "text" },
@@ -26,28 +36,4 @@ export default {
   },
 };
 
-type argsType = {
-  width: number | string;
-  height: number;
-  index: number;
-  items: {
-    title: string;
-    introduce: string;
-    hiddenText: string;
-  };
-};
-
-const Template: StoryFn<argsType> = (args) => <GridBox {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  width: "300px",
-  height: 400,
-  index: 0,
-  items: {
-    title: "Example Title",
-    introduce: "This is an introduction text for the GridBox component.",
-    hiddenText: "This is hidden text revealed on toggle.",
-  },
-};
+export const Story = {};

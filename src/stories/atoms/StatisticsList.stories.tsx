@@ -1,6 +1,6 @@
 import React from "react";
-import { StoryFn } from "@storybook/react";
 import StatisticsList from "./StatisticsList";
+import { statistList } from "@/app/pages/components/Introduce";
 
 export default {
   title: "Components/StatisticsList",
@@ -25,26 +25,30 @@ export default {
       description: "Direction of the list",
     },
   },
+  args: {
+    list: statistList,
+    width: 400,
+    wrap: true,
+    direction: "row",
+  },
 };
 
-type ArgsType = {
-  list: { label: string; value: string }[];
-  width: string | number;
-  wrap: boolean;
-  direction: "row" | "column";
-};
-
-const Template: StoryFn<ArgsType> = (args) => <StatisticsList {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  list: [
-    { label: "Users", value: "1,234" },
-    { label: "Downloads", value: "567" },
-    { label: "Reviews", value: "89" },
-  ],
-  width: "200px",
-  wrap: true,
-  direction: "row",
+export const Default = {
+  render: (args: {
+    list: { label: string; value: string }[];
+    width: string | number;
+    wrap: boolean;
+    direction: "row" | "column";
+  }) => (
+    <div
+      style={{
+        background: "rgb(189 189 189 / 43%)",
+        width: "100%",
+        height: 400,
+        padding: 20,
+      }}
+    >
+      <StatisticsList {...args} />
+    </div>
+  ),
 };

@@ -1,4 +1,5 @@
 import { Button } from "./Button";
+import "@/app/globals.css";
 
 export default {
   title: "atoms/Button",

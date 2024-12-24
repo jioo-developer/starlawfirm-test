@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryFn } from "@storybook/react";
 import Pagination from "./Pagination";
+import "@/app/globals.css";
 
 export default {
   title: "Components/Pagination",

@@ -1,7 +1,7 @@
 import GridBox from "@/stories/atoms/GridBox";
 import { useInView } from "react-intersection-observer";
 
-const officeList = [
+export const officeList = [
   {
     title: "토스코어",
     introduce: "상식적인 금융 서비스는\n삶을 윤택하게 합니다",

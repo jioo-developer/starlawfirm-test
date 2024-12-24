@@ -22,6 +22,10 @@
     border-radius: 50%;
     text-align: center;
     cursor: pointer;
+
+    button {
+      width: 100%;
+    }
   }
 
   .page-item.active {

@@ -2,7 +2,7 @@ import { useScrollStore } from "@/app/store/common";
 import FlowImage from "@/app/utils/FlowImage";
 import StatisticsList from "@/stories/atoms/StatisticsList";
 
-const statistList = [
+export const statistList = [
   { label: "월간 활성 사용자", value: "1,910만" },
   { label: "누적 가입자 수", value: "2,800만" },
   { label: "서비스 수", value: "100개" },
