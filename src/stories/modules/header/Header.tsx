@@ -197,6 +197,7 @@ const Header = () => {
               src={"/images/logo.svg"}
               alt="로고"
               style={{ marginLeft: 6.8 }}
+              priority
             />
           </Link>
           {isMobile && (
