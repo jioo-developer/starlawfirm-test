@@ -18,6 +18,7 @@ const style = css`
   align-items: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
+  z-index: 900;
 
   &:hover {
     transform: scale(1.1);

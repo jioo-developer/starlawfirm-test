@@ -1,5 +1,5 @@
 import React from "react";
-import HistoryMap from "./HistoryMap";
+import HistoryMap from "../vertical/HistoryMap";
 
 export default {
   title: "Components/HistoryMap",

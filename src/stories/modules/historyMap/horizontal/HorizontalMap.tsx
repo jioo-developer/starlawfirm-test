@@ -1,17 +1,20 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 import { css } from "@emotion/react";
-import { Data, historyDataType } from "@/stories/atoms/HistoryList/historyData";
-import HistoryList from "@/stories/atoms/HistoryList/HistoryList";
+import {
+  Data,
+  historyDataType,
+} from "@/stories/atoms/HistoryList/vertical/historyData";
 import { useState } from "react";
+import HorizontalList from "@/stories/atoms/HistoryList/horizontal/HorizontalList";
 
 const MapListStyle = css`
   display: flex;
-  flex-direction: column;
   padding-left: 75px;
-  @media all and (max-width: 760px) {
-    padding-left: 0;
-  }
+  flex-direction: column;
+  margin-top: 30px;
+  height: 900px;
+  padding: 0 20px;
 
   li {
     display: flex;
@@ -36,7 +39,7 @@ const MapListStyle = css`
   }
 `;
 
-const HistoryMap = () => {
+const HorizontalMap = () => {
   const initialData = Data[Data.length - 1];
   const [yearState, setYear] = useState<historyDataType>([initialData]);
 
@@ -47,8 +50,8 @@ const HistoryMap = () => {
   };
 
   return (
-    <div style={{ width: "100%", display: "flex" }}>
-      <HistoryList selectYear={selectYear} yearState={yearState} />
+    <>
+      <HorizontalList selectYear={selectYear} yearState={yearState} />
       <ul css={MapListStyle}>
         {yearState[0].history.map((item, index) => {
           return (
@@ -59,8 +62,8 @@ const HistoryMap = () => {
           );
         })}
       </ul>
-    </div>
+    </>
   );
 };
 
-export default HistoryMap;
+export default HorizontalMap;

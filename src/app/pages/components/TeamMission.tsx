@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import { showStore, useScrollStore } from "@/app/store/common";
 import { useEffect, useRef, useState } from "react";
+import useMediaQuery from "@/app/hooks/jseMediaQuery";
 
 const TeamMission = () => {
   const scroll = useScrollStore().scroll;
@@ -15,6 +16,8 @@ const TeamMission = () => {
     opacity: ${opacity};
   `;
 
+  const isMobile = useMediaQuery("(max-width: 760px)");
+
   useEffect(() => {
     if (thirdSectionRef.current && coverRef.current) {
       const sectionTop = thirdSectionRef.current.offsetTop;
@@ -24,7 +27,12 @@ const TeamMission = () => {
       const coverHeight = coverRef.current.offsetHeight;
       const coverBottom = window.innerHeight + coverHeight;
 
-      if (scroll >= sectionTop && scroll < coverBottom) {
+      const offset = isMobile ? window.innerWidth : 0;
+
+      if (scroll >= sectionTop && scroll < coverBottom - offset) {
+        console.log(scroll + "스크롤");
+        console.log(sectionTop + "섹션 탑");
+        console.log(coverBottom + "커버 바텀");
         showStore.setState({ toggle: true });
       } else if (scroll >= coverBottom) {
         showStore.setState({ toggle: false });
