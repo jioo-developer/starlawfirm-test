@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { MSWComponent } from "./utils/MswRunner";
@@ -6,6 +6,11 @@ import { MSWComponent } from "./utils/MswRunner";
 export const metadata: Metadata = {
   title: "토스 팀 소개",
   description: "토스 팀에 관한 홈페이지 입니다",
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: "device-width",
 };
 
 const NotoSans = Noto_Sans_KR({

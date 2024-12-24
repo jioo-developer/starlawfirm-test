@@ -42,7 +42,7 @@ const YearStyle = (year: number) => css`
     top: -10px;
     left: -78px;
     padding: 3px;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-style: normal;
     font-weight: bold;
     line-height: 25px;

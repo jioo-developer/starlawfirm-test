@@ -12,11 +12,14 @@ const gridStyle = ({ width, height }: gridStylePropsType) => css`
   display: flex;
   width: ${typeof width === "number" ? `${width}px` : width};
   height: ${height}px;
-  padding: 32px;
+  padding: 2em;
   box-sizing: border-box;
   border-radius: 16px;
   position: relative;
   overflow: hidden;
+  @media all and (max-width: 760px) {
+    width: 100%;
+  }
 `;
 
 const secTopStyle = css`
@@ -26,10 +29,10 @@ const secTopStyle = css`
   z-index: 100;
   .office_title {
     height: 24px;
-    margin: 0 0 8px 0;
+    margin: 0 0 0.5em 0;
     overflow-y: hidden;
-    font-size: 15px;
-    line-height: 24px;
+    font-size: 0.9375rem;
+    line-height: 1.5;
     font-weight: 500;
     color: #4e5968;
     opacity: 1;
@@ -38,16 +41,23 @@ const secTopStyle = css`
       height 0.3s ease;
   }
   .office_ment {
-    margin: 0 0 20px 0;
-    font-size: 32px;
+    margin: 0 0 1em 0;
+    font-size: 2rem;
     font-weight: bold;
-    line-height: 41px;
+    line-height: 1.35;
     color: #333d4b;
     width: 88%;
     opacity: 1;
     transition:
       font-size 0.3s ease,
       line-height 0.3s ease;
+
+    @media all and (max-width: 760px) {
+      font-size: 8vw;
+      br {
+        display: none;
+      }
+    }
   }
 
   .hidden_text {
@@ -74,8 +84,15 @@ const secTopStyle = css`
       opacity: 0;
     }
     .office_ment {
-      font-size: 26px;
-      line-height: 33px;
+      font-size: 1.733rem;
+      line-height: 1.5;
+
+      @media all and (max-width: 760px) {
+        font-size: 6.5vw;
+        br {
+          display: none;
+        }
+      }
     }
 
     .more_btn {
@@ -94,12 +111,16 @@ const secTopStyle = css`
       background-size: cover;
       background-repeat: no-repeat;
       z-index: 101;
+
+      @media all and (max-width: 760px) {
+        bottom: 5px;
+      }
     }
 
     .hidden_text {
       p {
         display: block;
-        font-size: 17px;
+        font-size: 1.0625rem;
         font-weight: 500;
         line-height: 1.5;
         color: rgb(51, 61, 75);
@@ -108,10 +129,10 @@ const secTopStyle = css`
       }
       span {
         display: block;
-        margin-top: 24px;
-        font-size: 16px;
+        margin-top: 1.5em;
+        font-size: 1rem;
         font-weight: normal;
-        line-height: 20px;
+        line-height: 1.5;
         color: rgb(49, 130, 246);
         transition:
           font-size 0.3s,

@@ -22,7 +22,7 @@ const TeamMission = () => {
       const sectionHeight = thirdSectionRef.current.offsetHeight;
       // .section03의 전체 높이
       const coverHeight = coverRef.current.offsetHeight;
-      const coverBottom = 900 + coverHeight;
+      const coverBottom = window.innerHeight + coverHeight;
 
       if (scroll >= sectionTop && scroll < coverBottom) {
         showStore.setState({ toggle: true });

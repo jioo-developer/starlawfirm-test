@@ -14,6 +14,10 @@ const articleStyle = ({ width, height, radius }: propsType) => css`
   margin-bottom: 80px;
   justify-content: space-between;
   cursor: pointer;
+  @media all and (max-width: 760px) {
+    flex-direction: column;
+    margin-bottom: 9vw;
+  }
 
   &:hover {
     .notice_title {
@@ -37,6 +41,14 @@ const articleStyle = ({ width, height, radius }: propsType) => css`
     border-radius: ${radius ? radius : 0}px;
     overflow: hidden;
     order: 1;
+
+    @media all and (max-width: 760px) {
+      &,
+      & > img {
+        width: 100%;
+        order: 0;
+      }
+    }
   }
 
   figcaption {
@@ -46,21 +58,30 @@ const articleStyle = ({ width, height, radius }: propsType) => css`
     .notice_type,
     .notice_date {
       color: #8b95a1;
-      font-size: 15px;
+      font-size: 0.975rem;
       font-weight: 400;
       line-height: 1.4;
-      margin-bottom: 10px;
+      margin-bottom: 0.625em;
+      @media all and (max-width: 760px) {
+        order: 1;
+      }
     }
 
     .notice_title {
       color: #000;
-      font-size: 23px;
+      font-size: 1.4375rem;
       font-weight: 600;
       line-height: 1.4;
-      margin-bottom: 10px;
+      margin-bottom: 0.625em;
       transition: 0.2s ease-in-out;
     }
   }
+`;
+
+const subTItle = css`
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.25em;
 `;
 
 interface newType extends propsType {
@@ -90,10 +111,7 @@ const RowNoticeArticle = ({
       <figcaption>
         <span className="notice_type">{items.type}</span>
         <p className="notice_sub_title">{items.title}</p>
-        <p
-          className="sub_title"
-          css={{ fontSize: 20, fontWeight: 500, marginBottom: 20 }}
-        >
+        <p className="sub_title" css={subTItle}>
           {items.subTitle}
         </p>
         <span className="notice_date">{items.date}</span>

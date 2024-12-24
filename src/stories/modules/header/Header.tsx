@@ -4,6 +4,8 @@ import { css } from "@emotion/react";
 import Link from "next/link";
 import Image from "next/image";
 import useScroll from "@/app/hooks/useScroll";
+import useMediaQuery from "@/app/hooks/jseMediaQuery";
+import { useState } from "react";
 
 const headerStyle = css`
   position: fixed;
@@ -14,6 +16,15 @@ const headerStyle = css`
   height: 60px;
   transition: backdrop-filter 50ms ease-in-out;
   border-bottom: none;
+
+  @media all and (max-width: 760px) {
+    max-width: 100vw;
+
+    &.isMobile {
+      height: auto;
+      background: #191f28;
+    }
+  }
 `;
 
 const headerInStyle = css`
@@ -24,13 +35,52 @@ const headerInStyle = css`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+
+  @media all and (max-width: 1200px) {
+    width: 95%;
+  }
+
+  @media all and (max-width: 760px) {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+    position: relative; /* 오타 수정 */
+    max-width: 100vw;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+  }
 `;
 
 const navStyle = css`
-  display: inline-flex;
-  gap: 32px;
   height: 100%;
-  margin-right: 30px;
+
+  ul {
+    display: inline-flex;
+    gap: 32px;
+    height: 100%;
+    margin-right: 30px;
+
+    @media all and (max-width: 1200px) {
+      margin-right: 0;
+      gap: 16px;
+    }
+
+    @media all and (max-width: 760px) {
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+
+      &.isMobile {
+        max-height: 420px;
+      }
+    }
+  }
 
   li {
     display: flex;
@@ -38,9 +88,19 @@ const navStyle = css`
     align-items: center;
     height: 98%;
 
+    @media all and (max-width: 760px) {
+      width: 100%;
+      height: auto;
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      padding-bottom: 1em;
+    }
+
     a {
-      padding: 12px 10px;
-      font-size: 14px;
+      padding: 0.75em 0.625em;
+      font-size: 0.875rem;
       color: #fff;
       border-radius: 8px;
       border: 0;
@@ -53,6 +113,19 @@ const navStyle = css`
         background: rgba(217, 217, 255, 0.15);
       }
     }
+  }
+`;
+
+const mobileMenu = css`
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 0;
+  display: flex;
+  cursor: pointer;
+
+  @media all and (max-width: 760px) {
+    display: block;
   }
 `;
 
@@ -91,11 +164,16 @@ const navInfo = [
 
 const Header = () => {
   const scroll = useScroll().scroll;
+  const isMobile = useMediaQuery("(max-width: 760px)");
+  const [navToggle, setToggle] = useState(false);
   return (
     <>
-      <header css={scroll > 1 ? [headerStyle, activeHeader] : headerStyle}>
+      <header
+        css={scroll > 1 ? [headerStyle, activeHeader] : headerStyle}
+        className={navToggle ? "isMobile" : ""}
+      >
         <div className="in_header" css={headerInStyle}>
-          <Link href="/">
+          <Link href="/" className="logo">
             <Image
               width={65}
               height={20}
@@ -104,15 +182,28 @@ const Header = () => {
               style={{ marginLeft: 6.8 }}
             />
           </Link>
-          <ul className="header_ul" css={navStyle}>
-            {navInfo.map((item, index) => {
-              return (
-                <li key={index}>
-                  <Link href={item.href}>{item.title}</Link>
-                </li>
-              );
-            })}
-          </ul>
+          {isMobile && (
+            <button css={mobileMenu} onClick={() => setToggle(!navToggle)}>
+              <Image
+                src={"/images/nav_menu_white.svg"}
+                width={60}
+                height={30}
+                alt="모바일 메뉴"
+              />
+            </button>
+          )}
+
+          <nav css={navStyle}>
+            <ul className={navToggle ? "header_ul isMobile" : "header_ul"}>
+              {navInfo.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <Link href={item.href}>{item.title}</Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
         </div>
       </header>
     </>
