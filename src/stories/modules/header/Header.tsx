@@ -119,13 +119,30 @@ const navStyle = css`
 const mobileMenu = css`
   display: none;
   position: absolute;
-  top: 16px;
-  right: 0;
+  top: 18.5px;
+  right: 7px;
   display: flex;
   cursor: pointer;
 
   @media all and (max-width: 760px) {
     display: block;
+  }
+
+  .menu-icon {
+    width: 37px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: scale(0.8);
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 3px;
   }
 `;
 
@@ -184,12 +201,11 @@ const Header = () => {
           </Link>
           {isMobile && (
             <button css={mobileMenu} onClick={() => setToggle(!navToggle)}>
-              <Image
-                src={"/images/nav_menu_white.svg"}
-                width={60}
-                height={30}
-                alt="모바일 메뉴"
-              />
+              <div className="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </button>
           )}
 
