@@ -5,6 +5,7 @@ import Pagination from "./Pagination";
 export default {
   title: "Components/Pagination",
   component: Pagination,
+  tags: ["autodocs"],
   argTypes: {
     page: {
       control: { type: "number" },

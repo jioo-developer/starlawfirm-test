@@ -5,6 +5,7 @@ import StatisticsList from "./StatisticsList";
 export default {
   title: "Components/StatisticsList",
   component: StatisticsList,
+  tags: ["autodocs"],
   argTypes: {
     list: {
       control: "object",

@@ -6,6 +6,7 @@ import { historyDataType } from "./historyData";
 export default {
   title: "Components/HistoryList",
   component: HistoryList,
+  tags: ["autodocs"],
   argTypes: {
     selectYear: { action: "clicked" },
   },

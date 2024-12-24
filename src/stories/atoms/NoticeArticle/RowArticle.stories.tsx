@@ -5,6 +5,7 @@ import RowNoticeArticle from "./RowArticle";
 export default {
   title: "Components/RowNoticeArticle",
   component: RowNoticeArticle,
+  tags: ["autodocs"],
   argTypes: {
     items: {
       control: "object",

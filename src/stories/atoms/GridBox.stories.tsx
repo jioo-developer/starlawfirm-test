@@ -5,6 +5,7 @@ import { StoryFn } from "@storybook/react";
 export default {
   title: "Components/GridBox",
   component: GridBox,
+  tags: ["autodocs"],
   argTypes: {
     width: {
       control: { type: "text" },

@@ -5,6 +5,7 @@ import HistoryMap from "./HistoryMap";
 export default {
   title: "Components/HistoryMap",
   component: HistoryMap,
+  tags: ["autodocs"],
 };
 
 const Template: StoryFn = () => <HistoryMap />;

@@ -5,6 +5,7 @@ import NoticeArticle from "./NoticeArticle";
 export default {
   title: "Components/NoticeArticle",
   component: NoticeArticle,
+  tags: ["autodocs"],
   argTypes: {
     handler: { action: "handled" },
   },
