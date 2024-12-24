@@ -52,7 +52,12 @@ const headerInStyle = css`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100px;
     height: 60px;
+    background: url(/images/logo.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
 
     img {
       margin-left: 6.8px;
@@ -195,15 +200,7 @@ const Header = () => {
         className={navToggle ? "isMobile" : ""}
       >
         <div className="in_header" css={headerInStyle}>
-          <Link href="/" className="logo" rel="preload">
-            <Image
-              width={100}
-              height={50}
-              src={"/images/Toss_Logo.webp"}
-              alt="로고"
-              priority
-            />
-          </Link>
+          <div className="logo"></div>
           {isMobile && (
             <button css={mobileMenu} onClick={() => setToggle(!navToggle)}>
               <div className="menu-icon">
