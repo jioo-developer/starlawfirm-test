@@ -2,22 +2,16 @@
 import Image from "next/image";
 import { css } from "@emotion/react";
 import { useEffect, useRef } from "react";
+import { throttle } from "@/app/handler/common";
 
-type propsType = {
+type stylePropsType = {
   width: number;
   height: number;
   radius?: number;
-  active: number;
-  index: number;
+  active?: number | undefined;
 };
 
-const articleStyle = ({
-  width,
-  height,
-  radius,
-  active,
-  index,
-}: propsType) => css`
+const articleStyle = ({ width, height, radius, active }: stylePropsType) => css`
   width: ${width}px;
   margin-bottom: 80px;
 
@@ -31,7 +25,7 @@ const articleStyle = ({
     border-radius: ${radius ? radius : 0}px;
     overflow: hidden;
     margin-bottom: 20px;
-    opacity: ${active - 1 !== index ? "0.3" : "1"};
+    opacity: ${active ? "1" : 0.3};
 
     @media all and (max-width: 760px) {
       &,
@@ -66,11 +60,11 @@ const articleStyle = ({
   }
 `;
 
-interface newType extends propsType {
+interface newType extends stylePropsType {
   items: { type: string; title: string; date: string };
   index: number;
   handler: (object: { topvalue: number; heightvalue: number }) => void;
-  active: number;
+  active?: number | undefined;
 }
 
 const NoticeArticle = ({
@@ -85,17 +79,28 @@ const NoticeArticle = ({
   const ArticleRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    throttleHandler(); // 초기 실행
+    window.addEventListener("resize", throttleHandler);
+
+    return () => {
+      window.removeEventListener("resize", throttleHandler);
+    };
+  }, []);
+
+  const articleIfnoSetting = () => {
     if (ArticleRef && ArticleRef.current) {
       const offsetTop = ArticleRef.current.offsetTop;
       const offsetHeight = ArticleRef.current.offsetHeight;
       const object = { topvalue: offsetTop, heightvalue: offsetHeight };
       handler(object);
     }
-  }, [ArticleRef]);
+  };
+
+  const throttleHandler = throttle(articleIfnoSetting, 300);
 
   return (
     <article
-      css={articleStyle({ width, height, radius, active, index })}
+      css={articleStyle({ width, height, radius, active })}
       ref={ArticleRef}
     >
       <figure>

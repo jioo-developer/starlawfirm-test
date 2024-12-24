@@ -1,5 +1,4 @@
 import { overlapHandler } from "@/app/handler/common";
-import useMediaQuery from "@/app/hooks/jseMediaQuery";
 import { useScrollStore } from "@/app/store/common";
 import { Button } from "@/stories/atoms/Button";
 import NoticeArticle from "@/stories/atoms/NoticeArticle/NoticeArticle";
@@ -37,40 +36,44 @@ const RecommendNotice = () => {
   const sixSectionRef = useRef<HTMLElement | null>(null);
 
   const handler = (object: { topvalue: number; heightvalue: number }) => {
-    setArray((state) => overlapHandler([...state, object]));
+    setArray((state) => {
+      const update = overlapHandler([...state, object]);
+      return update.slice(-3);
+    });
   };
 
-  const [indexState, setIndex] = useState(0);
+  const [indexState, setIndex] = useState<number | undefined>(undefined);
 
-  const isMobile = useMediaQuery("(max-width: 760px)");
+  useEffect(() => {
+    console.log(refValueArray);
+  }, [refValueArray]);
+
+  useEffect(() => {
+    console.log(indexState);
+  }, [indexState]);
 
   useEffect(() => {
     if (sixSectionRef.current) {
       const sectionTop = sixSectionRef.current.offsetTop;
       const sectionHeight = sixSectionRef.current.offsetHeight;
+
       if (scroll > sectionTop) {
         const scrollInSection = scroll - sectionTop;
-        const offset = isMobile ? window.innerWidth : 0;
-
-        for (let idx = 1; idx < refValueArray.length - 1; idx++) {
-          if (
-            scrollInSection > refValueArray[idx].topvalue - offset &&
-            scrollInSection < refValueArray[idx + 1].topvalue - offset
-          ) {
-            setIndex(idx);
-            break;
+        const scrollPercent = (scrollInSection / sectionHeight) * 100; // 스크롤 퍼센트 계산
+        const result = Math.round(scrollPercent); // 소수점 반올림
+        if (result < 100) {
+          for (let idx = 0; idx < refValueArray.length; idx++) {
+            if (
+              scrollInSection > refValueArray[idx].topvalue &&
+              scrollInSection < refValueArray[idx + 1].topvalue
+            ) {
+              setIndex(idx);
+              break;
+            }
           }
         }
-
-        if (
-          scrollInSection >
-            refValueArray[refValueArray.length - 1].topvalue - offset &&
-          scrollInSection < sectionHeight
-        ) {
-          setIndex(refValueArray.length - 1);
-        }
       } else {
-        setIndex(0);
+        setIndex(undefined);
       }
     }
   }, [scroll]);
@@ -89,16 +92,16 @@ const RecommendNotice = () => {
                 height={340}
                 radius={16}
                 handler={handler}
-                active={indexState}
+                active={
+                  typeof indexState !== "undefined" ? indexState : undefined
+                }
               />
             );
           })}
         </div>
         <div className="text_wrap">
           <h1 className="title">
-            {indexState === 0 || newsList[indexState - 1].title === undefined
-              ? "이번주 토스's"
-              : newsList[indexState - 1].title}
+            {!indexState ? "이번주 토스's" : newsList[indexState].title}
           </h1>
           <p className="text">금주에 추천드리는 토스 소식입니다!</p>
           <Button

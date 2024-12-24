@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import { showStore, useScrollStore } from "@/app/store/common";
 import { useEffect, useRef, useState } from "react";
-import useMediaQuery from "@/app/hooks/jseMediaQuery";
+import { throttle } from "@/app/handler/common";
 
 const TeamMission = () => {
   const scroll = useScrollStore().scroll;
@@ -16,45 +16,42 @@ const TeamMission = () => {
     opacity: ${opacity};
   `;
 
-  const isMobile = useMediaQuery("(max-width: 760px)");
-
-  useEffect(() => {
-    if (thirdSectionRef.current && coverRef.current) {
+  const scrollHandler = () => {
+    if (thirdSectionRef.current) {
       const sectionTop = thirdSectionRef.current.offsetTop;
       // .section03의 시작 위치 (뷰포트 기준)
       const sectionHeight = thirdSectionRef.current.offsetHeight;
       // .section03의 전체 높이
-      const coverHeight = coverRef.current.offsetHeight;
-      const coverBottom = window.innerHeight + coverHeight;
-
-      const offset = isMobile ? window.innerWidth : 0;
-
-      if (scroll >= sectionTop && scroll < coverBottom - offset) {
-        showStore.setState({ toggle: true });
-      } else if (scroll >= coverBottom) {
-        showStore.setState({ toggle: false });
-      } else {
-        showStore.setState({ toggle: false });
-      }
-      if (scroll > sectionTop) {
+      if (scroll > sectionTop && scroll < sectionTop + sectionHeight) {
         const scrollInSection = scroll - sectionTop; // .section03 내부에서 스크롤된 거리
         const scrollPercent = (scrollInSection / sectionHeight) * 100; // 스크롤 퍼센트 계산
-        const reversedPercent = 100 - scrollPercent;
-        const result = Math.round(reversedPercent); // 소수점 반올림
-        if (result <= 30) {
+        const result = Math.round(scrollPercent); // 소수점 반올림
+        if (result < 100) {
+          showStore.setState({ toggle: true });
+        } else {
+          showStore.setState({ toggle: false });
+        }
+        if (result >= 70) {
+          // 끝나는 수치 조정
           setOpacity(1);
         } else {
           setOpacity(result / 100);
         }
       } else {
         setOpacity(1);
+        showStore.setState({ toggle: false });
       }
     }
+  };
+  const throttleScroll = throttle(scrollHandler, 250);
+
+  useEffect(() => {
+    throttleScroll();
   }, [scroll]);
 
   return (
     <section className="section03" ref={thirdSectionRef}>
-      <div className="cover" css={opaticyValue} ref={coverRef}></div>
+      {show && <div className="cover" css={opaticyValue} ref={coverRef}></div>}
       <div className="in_wrap">
         {show && <div className="background"></div>}
         <div className="team_mission">

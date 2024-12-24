@@ -13,7 +13,7 @@ const MapListStyle = css`
   padding-left: 75px;
   flex-direction: column;
   margin-top: 30px;
-  height: 900px;
+  height: 850px;
   padding: 0 20px;
 
   li {
