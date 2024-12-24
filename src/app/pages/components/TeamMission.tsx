@@ -30,9 +30,6 @@ const TeamMission = () => {
       const offset = isMobile ? window.innerWidth : 0;
 
       if (scroll >= sectionTop && scroll < coverBottom - offset) {
-        console.log(scroll + "스크롤");
-        console.log(sectionTop + "섹션 탑");
-        console.log(coverBottom + "커버 바텀");
         showStore.setState({ toggle: true });
       } else if (scroll >= coverBottom) {
         showStore.setState({ toggle: false });
