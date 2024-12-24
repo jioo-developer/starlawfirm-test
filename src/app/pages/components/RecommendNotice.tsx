@@ -50,7 +50,7 @@ const RecommendNotice = () => {
       const sectionHeight = sixSectionRef.current.offsetHeight;
       if (scroll > sectionTop) {
         const scrollInSection = scroll - sectionTop;
-        const offset = isMobile ? 180 : 0;
+        const offset = isMobile ? window.innerWidth : 0;
 
         for (let idx = 1; idx < refValueArray.length - 1; idx++) {
           if (
