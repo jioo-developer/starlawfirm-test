@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Notice from "@/app/pages/components/Notice";
+import Notice from "@/app/pages/main/components/Notice";
 import axios from "axios";
 import { NoticeData } from "@/app/mocks/handlers";
 import { useInView } from "react-intersection-observer";

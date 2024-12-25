@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import StatisticsList from "./StatisticsList";
-import { statistList } from "@/app/pages/components/Introduce";
+import { statistList } from "@/app/pages/main/components/Introduce";
 
 export default {
   title: "Components/StatisticsList",
