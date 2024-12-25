@@ -204,7 +204,8 @@ const Header = () => {
               src={"/images/Toss_Logo.webp"}
               alt="로고"
               priority
-              loading="eager"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
             />
           </Link>
           {isMobile && (
