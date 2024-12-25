@@ -35,8 +35,7 @@ const articleStyle = ({
     opacity: ${active === index ? "1" : "0.3"};
 
     @media all and (max-width: 1000px) {
-      &,
-      & > img {
+      & {
         width: 100%;
         height: auto;
       }
@@ -115,7 +114,9 @@ const NoticeArticle = ({
           src={`/images/article_image${index + 1}.webp`}
           width={width}
           height={height}
+          layout="responsive" // 반응형 레이아웃
           alt="아티클1"
+          title="임의의 이미지 입니다."
         />
       </figure>
       <figcaption>

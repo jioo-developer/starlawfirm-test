@@ -53,14 +53,13 @@ const secTopStyle = css`
       line-height 0.3s ease;
 
     @media all and (max-width: 760px) {
-      font-size: 1.875rem;
+      font-size: 1.25rem;
       br {
         display: none;
       }
     }
 
     @media all and (max-width: 400px) {
-      font-size: 1.25rem;
       br {
         display: none;
       }
@@ -93,13 +92,6 @@ const secTopStyle = css`
     .office_ment {
       font-size: 1.733rem;
       line-height: 1.5;
-
-      @media all and (max-width: 760px) {
-        font-size: 6.5vw;
-        br {
-          display: none;
-        }
-      }
     }
 
     .more_btn {

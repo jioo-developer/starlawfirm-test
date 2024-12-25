@@ -14,6 +14,7 @@ const articleStyle = ({ width, height, radius }: propsType) => css`
   margin-bottom: 80px;
   justify-content: space-between;
   cursor: pointer;
+  gap: 0 1.25em;
   @media all and (max-width: 760px) {
     flex-direction: column;
     margin-bottom: 9vw;
@@ -43,9 +44,9 @@ const articleStyle = ({ width, height, radius }: propsType) => css`
     order: 1;
 
     @media all and (max-width: 760px) {
-      &,
-      & > img {
+      & {
         width: 100%;
+        height: auto;
         order: 0;
       }
     }
@@ -55,6 +56,7 @@ const articleStyle = ({ width, height, radius }: propsType) => css`
     display: flex;
     flex-direction: column;
     order: 0;
+    max-width: 455px;
     .notice_type,
     .notice_date {
       color: #8b95a1;
@@ -106,6 +108,8 @@ const RowNoticeArticle = ({
           width={width}
           height={height}
           alt={`아티클-${index}`}
+          layout="responsive" // 반응형 레이아웃
+          title="임의의 이미지 입니다."
         />
       </figure>
       <figcaption>
