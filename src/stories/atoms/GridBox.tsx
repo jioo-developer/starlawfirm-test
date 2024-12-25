@@ -17,7 +17,7 @@ const gridStyle = ({ width, height }: gridStylePropsType) => css`
   border-radius: 16px;
   position: relative;
   overflow: hidden;
-  @media all and (max-width: 760px) {
+  @media all and (max-width: 1000px) {
     width: 100%;
   }
 `;
@@ -53,7 +53,14 @@ const secTopStyle = css`
       line-height 0.3s ease;
 
     @media all and (max-width: 760px) {
-      font-size: 7vw;
+      font-size: 1.875rem;
+      br {
+        display: none;
+      }
+    }
+
+    @media all and (max-width: 400px) {
+      font-size: 1.25rem;
       br {
         display: none;
       }
@@ -152,6 +159,10 @@ const background = (index: number) => css`
   background-repeat: no repeat;
   background-size: cover;
   transition: background-image 0.3s;
+
+  @media all and (max-width: 1000px) {
+    background-position: center center;
+  }
 
   &.active {
     filter: blur(58px);

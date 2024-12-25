@@ -3,6 +3,8 @@
 import { useEffect } from "react";
 import { useMswReady } from "../store/common";
 
+// msw provider (독립실행)
+
 export const MSWComponent = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {

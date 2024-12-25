@@ -33,6 +33,8 @@ const RecommendNotice = () => {
   const [refValueArray, setArray] = useState<RefArrayType[]>([
     { topvalue: 0, heightvalue: 0 }, // 초기 값 설정
   ]);
+  // article 들의 top 값과 height 값을 중앙 관리하는 state
+
   const sixSectionRef = useRef<HTMLElement | null>(null);
 
   const handler = (object: { topvalue: number; heightvalue: number }) => {
@@ -41,21 +43,29 @@ const RecommendNotice = () => {
       return update.slice(-3);
     });
   };
+  // article 들의 top 값과 height 값을 받아오는 중요한 함수
 
   const [indexState, setIndex] = useState<number>(0);
 
   const scrollHandler = () => {
     if (sixSectionRef.current) {
       const sectionTop = sixSectionRef.current.offsetTop;
+      // section06 top 값
       const sectionHeight = sixSectionRef.current.offsetHeight;
-
+      // section06 height 값
       if (scroll > sectionTop && scroll < sectionTop + sectionHeight) {
+        // 스크롤이 top 보다 크고 top + height 보다 작을 때
+        // 시작부터 끝까지 일 때 if
         const scrollInSection = scroll - sectionTop;
+        // 실제로 top 0부터 스크롤이 움직인 거리
         const scrollPercent = (scrollInSection / sectionHeight) * 100;
+        // 거리를 퍼센트로 표현
         const result = Math.round(scrollPercent);
+        // 퍼센트에서 소수점을 반올림
         const lastValue = refValueArray[refValueArray.length - 1].topvalue;
 
         if (result < 100) {
+          // 퍼센트가 100이 되면 종료
           for (let idx = 0; idx < refValueArray.length - 1; idx++) {
             if (
               scrollInSection > refValueArray[idx].topvalue &&
@@ -67,6 +77,7 @@ const RecommendNotice = () => {
           }
 
           if (scrollInSection >= lastValue) {
+            // 스크롤이 마지막 artlce에 도달하면 실행
             setIndex(refValueArray.length - 1);
           }
         }
@@ -75,7 +86,7 @@ const RecommendNotice = () => {
   };
 
   const throttleScroll = throttle(scrollHandler, 250);
-
+  // 스크롤 이기 때문에 쓰로틀을 적용해서 이벤트 중첩을 방지
   useEffect(() => {
     throttleScroll();
   }, [scroll]);

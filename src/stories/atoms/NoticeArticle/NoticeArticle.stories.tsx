@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import NoticeArticle from "./NoticeArticle";
 import "@/app/globals.css";
 
@@ -26,6 +27,21 @@ export default {
   },
 };
 
+const Style = css`
+  width: 300px;
+  height: 400px;
+  padding: 20px;
+
+  figure {
+    opacity: 1;
+  }
+
+  p,
+  span {
+    color: #888 !important;
+  }
+`;
+
 export const Default = {
   render: (args: {
     width: number;
@@ -40,14 +56,7 @@ export const Default = {
     };
     handler: (object: { topvalue: number; heightvalue: number }) => void;
   }) => (
-    <div
-      style={{
-        background: "rgb(189 189 189 / 43%)",
-        width: 300,
-        height: 400,
-        padding: 20,
-      }}
-    >
+    <div className="test" css={Style}>
       <NoticeArticle {...args} />
     </div>
   ),

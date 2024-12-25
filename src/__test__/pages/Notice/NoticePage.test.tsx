@@ -5,7 +5,7 @@ import axios from "axios";
 import { NoticeData } from "@/app/mocks/handlers";
 import { useInView } from "react-intersection-observer";
 
-// Axios Mocking
+// 사전 mocking
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
@@ -22,9 +22,11 @@ jest.mock("@/app/store/common", () => ({
   useMswReady: jest.fn(() => ({ loading: true })), // Mock 반환값 설정
 }));
 
+// 사전 mocking
+
 describe("Notice 페이지 소식 api 요청 테스트", () => {
   beforeEach(() => {
-    jest.clearAllMocks(); // Clear mocks after each test
+    jest.clearAllMocks();
     render(<Notice />);
   });
 
@@ -43,6 +45,8 @@ describe("Notice 페이지 소식 api 요청 테스트", () => {
       });
     });
 
+    // axios 요청 하는 지 검증
+
     const firstPost = screen.getByText(
       "토스, ‘머니북’ 수익금 3억 원 금융소외층에 기부"
     );
@@ -52,6 +56,8 @@ describe("Notice 페이지 소식 api 요청 테스트", () => {
 
     expect(firstPost).toBeInTheDocument();
     expect(secondPost).toBeInTheDocument();
+
+    // axios 요청 검증에 성공 했을 시  Response 데이터 랜더링 되는 지 검증
   });
   test("API 요청 실패시 재시도 버튼 랜더링 및 재 작동 테스트", async () => {
     window.alert = jest.fn();
@@ -77,6 +83,8 @@ describe("Notice 페이지 소식 api 요청 테스트", () => {
     expect(firstPost).not.toBeInTheDocument();
     expect(secondPost).not.toBeInTheDocument();
 
+    // axios 요청 검증에 실패 했을 시  Response 데이터 랜더링 되지 않는 걸 검증
+
     const firstButton = screen.getByText("소식이 안뜰 때 클릭");
 
     fireEvent.click(firstButton);
@@ -87,6 +95,8 @@ describe("Notice 페이지 소식 api 요청 테스트", () => {
         params: { params: 1 },
       });
     });
+
+    // 버튼 다시 눌렀을 때 axios 호출 재 검증
   });
   test("page 번호 1번 누르면 첫번째 페이지 게시글 호출 테스트", async () => {
     const mockResponse = {
@@ -124,12 +134,16 @@ describe("Notice 페이지 소식 api 요청 테스트", () => {
     const firstButton = screen.getByText(2);
     fireEvent.click(firstButton);
 
+    // 2번 버튼을 클릭 하면
+
     await waitFor(() => {
       expect(mockedAxios.get).toHaveBeenCalledTimes(1);
       expect(mockedAxios.get).toHaveBeenCalledWith("/NoticeData", {
         params: { params: 2 },
       });
     });
+
+    // axios의 params에 2를 넣어서 axios 요청을 하는 지 검증증
 
     const firstPost = screen.getByText(
       "토스, 안면인식 출국 서비스 ‘스마트패스’ 오픈"
@@ -140,5 +154,6 @@ describe("Notice 페이지 소식 api 요청 테스트", () => {
 
     expect(firstPost).toBeInTheDocument();
     expect(secondPost).toBeInTheDocument();
+    // 랜더링 요소 검증
   });
 });

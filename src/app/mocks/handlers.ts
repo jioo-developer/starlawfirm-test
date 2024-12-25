@@ -63,6 +63,8 @@ export const NoticeData = [
   },
 ];
 
+// resolve data
+
 export const handlers = [
   http.get("/NoticeData", ({ request }) => {
     const url = new URL(request.url);
@@ -79,3 +81,5 @@ export const handlers = [
     });
   }),
 ];
+
+// api 관련 코드

@@ -22,7 +22,7 @@ const articleStyle = ({
   width: ${width}px;
   margin-bottom: 80px;
 
-  @media all and (max-width: 760px) {
+  @media all and (max-width: 1000px) {
     width: 100%;
   }
 
@@ -34,7 +34,7 @@ const articleStyle = ({
     margin-bottom: 20px;
     opacity: ${active === index ? "1" : "0.3"};
 
-    @media all and (max-width: 760px) {
+    @media all and (max-width: 1000px) {
       &,
       & > img {
         width: 100%;
@@ -50,7 +50,7 @@ const articleStyle = ({
     .notice_type,
     .notice_date {
       color: #8b95a1;
-      font-size: 15px;
+      font-size: 0.9375rem;
       font-weight: 400;
       line-height: 1.4;
       margin-bottom: 10px;
@@ -58,7 +58,7 @@ const articleStyle = ({
 
     .notice_title {
       color: #fff;
-      font-size: 28px;
+      font-size: 1.75rem;
       font-weight: 600;
       line-height: 1.4;
       margin-bottom: 10px;

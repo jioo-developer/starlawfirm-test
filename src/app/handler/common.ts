@@ -6,10 +6,12 @@ export const debounce = <T extends unknown[]>(
   return (...args: T) => {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      func(...args); // args 타입이 func와 동일하게 추론됩니다
+      func(...args);
     }, delay);
   };
 };
+
+// debounce 함수
 
 export const throttle = <T extends unknown[]>(
   func: (...args: T) => void,
@@ -25,6 +27,8 @@ export const throttle = <T extends unknown[]>(
   };
 };
 
+// 쓰로틀 함수
+
 export const overlapHandler = <T>(array: T[]): T[] => {
   return array.filter((value, idx, arr) => {
     return (
@@ -34,3 +38,5 @@ export const overlapHandler = <T>(array: T[]): T[] => {
     );
   });
 };
+
+// 중복 필터 함수

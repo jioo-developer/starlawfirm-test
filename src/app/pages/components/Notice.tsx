@@ -16,6 +16,7 @@ type dataType = {
 
 const Notice = () => {
   const { ref, inView } = useInView({ threshold: 0.05 });
+  // lazyloading 관련 hook library
 
   const [page, setPage] = useState(1);
 
@@ -26,6 +27,8 @@ const Notice = () => {
   const [NoticeData, setData] = useState<dataType[]>([]);
 
   const mswloading = useMswReady().loading;
+
+  // api 요청 코드 start
 
   const fetchData = async (params: number) => {
     try {
@@ -38,13 +41,20 @@ const Notice = () => {
     }
   };
 
+  // api 요청 코드 end
+
+  // 무한 요청을 사전 방지하기위해 함수를 debounce에 넣고 실행
+
   const fetchDebounce = useCallback(
     debounce((page: number) => fetchData(page), 400), // 300ms 지연 설정
     []
   );
 
+  // 무한 요청을 사전 방지하기위해 함수를 debounce에 넣고 실행
+
   useEffect(() => {
     if (mswloading) {
+      // 항상 mws가 활성화 되어 있는지 체크하고 함수를 실행 시킴
       fetchDebounce(page);
     }
   }, [mswloading, page, fetchDebounce]);

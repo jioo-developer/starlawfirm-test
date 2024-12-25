@@ -9,6 +9,7 @@ const History = () => {
   const sectionStyle = !show ? { background: "#121417" } : {};
 
   const isMobile = useMediaQuery("(max-width: 760px)");
+  // 모바일 체크 hook library
 
   return (
     <section className="section04" style={sectionStyle}>

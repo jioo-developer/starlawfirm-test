@@ -121,6 +121,8 @@
   }
 }
 
+//mainVisual css end
+
 .section02 {
   display: flex;
   align-items: center;
@@ -177,6 +179,8 @@
     }
   }
 }
+
+// introduce.css end
 
 .section03 {
   display: flex;
@@ -276,6 +280,8 @@
   }
 }
 
+// teamMission.css end
+
 .section04 {
   display: flex;
   justify-content: center;
@@ -321,6 +327,8 @@
   }
 }
 
+// history.css end
+
 .section05 {
   display: flex;
   justify-content: center;
@@ -335,7 +343,7 @@
   }
   .in_wrap {
     width: 960px;
-    @media all and (max-width: 760px) {
+    @media all and (max-width: 1000px) {
       width: 90%;
     }
 
@@ -379,12 +387,14 @@
       gap: 28px;
       margin: 0 50px;
 
-      @media all and (max-width: 760px) {
+      @media all and (max-width: 1000px) {
         grid-template-columns: 1fr;
       }
     }
   }
 }
+
+//corporation css end
 
 .section06 {
   display: flex;
@@ -401,7 +411,7 @@
     padding-top: 180px;
     gap: 0 50px;
 
-    @media all and (max-width: 760px) {
+    @media all and (max-width: 1000px) {
       width: 90%;
       padding-top: 0;
     }
@@ -423,7 +433,7 @@
       justify-content: flex-start;
       margin-top: 50px;
 
-      @media all and (max-width: 760px) {
+      @media all and (max-width: 1000px) {
         display: none;
       }
 
@@ -448,6 +458,8 @@
     }
   }
 }
+
+//recommendNotice.css end
 
 .section07 {
   display: flex;
@@ -484,12 +496,11 @@
       transform: translate3d(0, 0, 0);
     }
     .notice_sub_title {
-      font-size: 28px;
+      font-size: 1.75rem;
       font-weight: 600;
       margin-bottom: 10px;
 
       @media all and (max-width: 760px) {
-        font-size: 7vw;
         margin-top: 1.25em;
       }
     }

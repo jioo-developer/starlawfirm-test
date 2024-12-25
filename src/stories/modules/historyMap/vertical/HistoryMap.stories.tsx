@@ -9,7 +9,9 @@ export default {
 
 export const Default = {
   render: () => (
-    <div style={{ padding: "70px 70px 70px 150px", background: "#d9d9d9" }}>
+    <div
+      style={{ padding: "70px 70px 70px 150px", background: "rgb(29,29,29)" }}
+    >
       <HistoryMap />
     </div>
   ),

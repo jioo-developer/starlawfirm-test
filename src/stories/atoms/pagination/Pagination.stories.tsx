@@ -1,9 +1,7 @@
-import React from "react";
-import { StoryFn } from "@storybook/react";
 import Pagination from "./Pagination";
 import "@/app/globals.css";
 
-export default {
+const meta = {
   title: "Components/Pagination",
   component: Pagination,
   tags: ["autodocs"],
@@ -19,18 +17,13 @@ export default {
   },
 };
 
-type ArgsType = {
-  page: number;
-  handler: (page: number) => void;
-};
+export default meta;
 
-const Template: StoryFn<ArgsType> = (args) => <Pagination {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  page: 1,
-  handler: (page: number) => {
-    console.log(`Page changed to: ${page}`);
+export const Default = {
+  args: {
+    page: 1,
+    handler: (page: number) => {
+      console.log(`Page changed to: ${page}`);
+    },
   },
 };

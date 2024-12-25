@@ -23,6 +23,7 @@ const TeamMission = () => {
       const sectionHeight = thirdSectionRef.current.offsetHeight;
       // .section03의 전체 높이
       if (scroll > sectionTop && scroll < sectionTop + sectionHeight) {
+        // 스크롤이 top 보다 크고 top + height 보다 작을 때  = 섹션의 시작과 끝
         const scrollInSection = scroll - sectionTop; // .section03 내부에서 스크롤된 거리
         const scrollPercent = (scrollInSection / sectionHeight) * 100; // 스크롤 퍼센트 계산
         const result = Math.round(scrollPercent); // 소수점 반올림
@@ -32,7 +33,7 @@ const TeamMission = () => {
           showStore.setState({ toggle: false });
         }
         if (result >= 70) {
-          // 끝나는 수치 조정
+          // opacity 투명효과가 끝나는 수치 조정
           setOpacity(1);
         } else {
           setOpacity(result / 100);
@@ -40,10 +41,12 @@ const TeamMission = () => {
       } else {
         setOpacity(1);
         showStore.setState({ toggle: false });
+        // 섹션을 벗어날 때 다시 초기화
       }
     }
   };
   const throttleScroll = throttle(scrollHandler, 250);
+  // 스크롤 이벤트 이기 때문에 이벤트 중첩을 방지하기 위해 쓰로틀 처리
 
   useEffect(() => {
     throttleScroll();

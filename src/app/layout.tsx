@@ -20,6 +20,8 @@ const NotoSans = Noto_Sans_KR({
   preload: true,
 });
 
+// 필요한 폰트만 불러와서 body에 적용
+
 export default function RootLayout({
   children,
 }: Readonly<{

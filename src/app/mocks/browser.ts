@@ -1,5 +1,5 @@
 import { setupWorker } from "msw/browser";
 import { handlers } from "./handlers";
 
-// MSW Worker 생성
+// 브라우저용 MSW Worker 생성
 export const worker = setupWorker(...handlers);

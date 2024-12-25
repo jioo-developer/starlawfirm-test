@@ -26,7 +26,7 @@ const Style = css`
   .year {
     color: rgb(107, 118, 132);
     /* 기본 텍스트 색상 */
-    font-size: 18px;
+    font-size: 1.125rem;
     cursor: pointer;
     transition: color 0.3s ease;
   }

@@ -53,6 +53,7 @@ export const officeList = [
 ];
 const Corporation = () => {
   const { ref, inView } = useInView({ threshold: 0.05 });
+  // lazyload 관련 hook library
   return (
     <section className="section05" ref={ref}>
       <div className="in_wrap">

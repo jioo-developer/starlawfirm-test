@@ -4,12 +4,12 @@ const useMediaQuery = (query: string) => {
   const [matches, setMatches] = useState(false);
 
   useEffect(() => {
-    // 브라우저에서 media query 평가
+    // 브라우저에서 media query 체크
     const media = window.matchMedia(query);
 
     // 상태를 초기화
     const listener = () => setMatches(media.matches);
-    listener(); // 초기 상태 설정
+    listener(); // init
 
     // 이벤트 리스너 추가
     media.addEventListener("change", listener);

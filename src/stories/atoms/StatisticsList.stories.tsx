@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import StatisticsList from "./StatisticsList";
 import { statistList } from "@/app/pages/components/Introduce";
 
@@ -33,6 +34,16 @@ export default {
   },
 };
 
+const Style = css`
+  width: 100%;
+  height: 400;
+  padding: 20px;
+  p,
+  span {
+    color: #888;
+  }
+`;
+
 export const Default = {
   render: (args: {
     list: { label: string; value: string }[];
@@ -40,14 +51,7 @@ export const Default = {
     wrap: boolean;
     direction: "row" | "column";
   }) => (
-    <div
-      style={{
-        background: "rgb(189 189 189 / 43%)",
-        width: "100%",
-        height: 400,
-        padding: 20,
-      }}
-    >
+    <div css={Style}>
       <StatisticsList {...args} />
     </div>
   ),

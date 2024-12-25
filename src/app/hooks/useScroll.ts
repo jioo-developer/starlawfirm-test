@@ -15,8 +15,10 @@ const useScroll = () => {
       useScrollStore.setState((state) => {
         if (state.scroll !== currentScroll) {
           return { scroll: currentScroll };
+          // 스크롤 값 리턴
         }
-        return state; // 상태가 동일하면 업데이트하지 않음
+        return state;
+        // Scroll 값의 상태가 동일하면 업데이트하지 않음
       });
     }
   };
@@ -44,7 +46,7 @@ const useScroll = () => {
       }
     });
 
-    return () => unsubscribe(); // 구독 해제
+    return () => unsubscribe();
   }, []);
 
   return { scroll, scrollDir };
