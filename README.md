@@ -81,5 +81,5 @@ git clone >> npm install >> npm run dev
 <br />
 모바일 성능 72% 이유
 <img src="./public/images/readme/mobile_reason.jpg" alt="" />
-해당 감점이 로고 이미지에서 발생하였습니다, 최대한 최적화를 하여 60% 였던 점수를 72% 까지 올렸습니다.
+해당 감점이 로고 이미지에서 발생하였습니다, 최대한 최적화를 하여 60% 였던 점수를 72% 까지 올렸습니다.<br />
 (해당 오류를 제외하곤 90프로 이상입니다.)
