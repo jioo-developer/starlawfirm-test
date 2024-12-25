@@ -61,5 +61,6 @@ git clone >> npm install >> npm run dev
 여섯번째 섹션 : (스크롤) 금주의 토스 소식이라고 제가 직접 추가한 섹션 입니다.<br />해당 섹션에서는 스크롤 이벤트를 이용하여 스크롤이 게시글에 도달했을 때 이미지가 켜지는 효과를 구현했습니다.<br />
 <img src="./public/images/readme/section-07.jpg" alt="" />
 일곱번째 섹션 : (api 통신) 해당 섹션에서는 msw라는 api 시뮬레이션 라이브러리를 이용하여 API 통신을 가정하여<br />게시글을 API 요청을 통해 가져오는 함수를 구현 하였습니다.
-<img src="./public/images/readme/test_directory.jpg" alt="" /><br />
+<br /><br />
 해당 함수의 테스트 코드도 작성 하였습니다.<br />
+<img src="./public/images/readme/test_directory.jpg" alt="" />
