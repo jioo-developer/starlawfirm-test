@@ -204,7 +204,6 @@ const Header = () => {
               src={"/images/Toss_Logo.webp"}
               alt="로고"
               priority
-              quality={1}
             />
           </Link>
           {isMobile && (
