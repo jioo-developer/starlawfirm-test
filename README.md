@@ -4,7 +4,7 @@
 
 안녕하세요 사전과제 전형 면접자 김지호 입니다.<br />
 저는 이번 과제에서 밑의 3가지 레퍼런스 중 토스 팀 소개 페이지를 기반으로 웹페이지를 제작하였습니다.<br />
-<img src="./public/images/select_test.jpg" alt="" />
+<img src="./public/images/readme/select_test.jpg" alt="" />
 <br />
 기존 토스 팀 소개 홈페이지 디자인을 그대로 가져오는 대신 새로운 애니메이션(인터렉션) 과 추가 섹션을 더해 제작하였습니다
 
