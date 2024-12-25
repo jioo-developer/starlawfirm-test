@@ -477,7 +477,7 @@
     flex-direction: column;
     transform: translate3d(0, calc(25%), 0);
     opacity: 0;
-    @media all and (max-width: 760px) {
+    @media all and (max-width: 1200px) {
       width: 90%;
     }
     .notice_title {
