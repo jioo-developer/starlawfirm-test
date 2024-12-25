@@ -1,9 +1,11 @@
-# 스타법무 법인 SW 개발파트 사전과제 Read Me
+# 스타법무 법인 SW 개발파트 사전과제
 
 <br />
 
 안녕하세요 사전과제 전형 면접자 김지호 입니다.<br />
 저는 이번 과제에서 밑의 3가지 레퍼런스 중 토스 팀 소개 페이지를 기반으로 웹페이지를 제작하였습니다.<br />
+<img src="./public/images/select_test.jpg" alt="" />
+<br />
 기존 토스 팀 소개 홈페이지 디자인을 그대로 가져오는 대신 새로운 애니메이션(인터렉션) 과 추가 섹션을 더해 제작하였습니다
 
 - 개발 언어 : Typescript & React
@@ -27,6 +29,7 @@ git clone >> npm install >> npm run dev
 ## 홈페이지 Preview
 
 주소 : https://starlawfirm-test.vercel.app/
+<br />
 <img src="./public/images/preview.jpg" alt="" />
 
 ## directory map
@@ -36,7 +39,8 @@ git clone >> npm install >> npm run dev
 ## test preview
 
   <img src="./public/images/test.jpg" alt="" />
-  jest를 통한 테스트는 작성한 코드가 의도대로 진행되는지와 api요청을 매번 할 수 없는 상황일 때 api요청 시뮬레이션을 하여 성공과 실패할 시 올바른 return이 나오는지 테스트 하는 것으로 생각하고 있습니다
+  jest를 통한 테스트는 작성한 코드가 의도대로 진행되는지와 api요청을 매번 할 수 없는 상황일 때<br />
+  api요청 시뮬레이션을 하여 성공과 실패할 시 올바른 return이 나오는지 테스트 하는 것으로 생각하고 있습니다
 
 ### 📌 주요기능
 
