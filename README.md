@@ -30,17 +30,17 @@ git clone >> npm install >> npm run dev
 
 주소 : https://starlawfirm-test.vercel.app/
 <br />
-<img src="./public/images/preview.jpg" alt="" />
+<img src="./public/images/readme/preview.jpg" alt="" />
 
 ## directory map
 
-  <img src="./public/images/directory_map.jpg" alt="" />
+  <img src="./public/images/readme/directory_map.jpg" alt="" />
   <br />
   스토리북 안의 컴포넌트 설계는 아토믹 디자인 패턴을 기반으로 가장 기초 컴포넌트 atoms을 제작 하였으며 atom들이 모여 modules가 되도록 제작하였습니다.
 
 ## test preview
 
-  <img src="./public/images/test.jpg" alt="" />
+  <img src="./public/images/readme/test.jpg" alt="" />
   jest를 통한 테스트는 작성한 코드가 의도대로 진행되는지와 api요청을 매번 할 수 없는 상황일 때<br />
   api요청 시뮬레이션을 하여 성공과 실패할 시 올바른 return이 나오는지 테스트 하는 것으로 생각하고 있습니다
 
