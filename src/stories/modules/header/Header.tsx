@@ -13,15 +13,19 @@ const headerStyle = css`
   left: 0;
   z-index: 1000;
   width: 100%;
-  height: 60px;
+  max-height: 60px;
   transition: backdrop-filter 50ms ease-in-out;
   border-bottom: none;
 
   @media all and (max-width: 760px) {
     max-width: 100vw;
-
+    overflow: hidden;
+    transition:
+      max-height 0.4s ease-in-out,
+      backdrop-filter 50ms ease-in-out,
+      background-color 0.5s cubic-bezier(0.4, 0, 1, 1);
     &.isMobile {
-      height: auto;
+      max-height: 420px;
       background: #191f28;
     }
   }
@@ -44,7 +48,7 @@ const headerInStyle = css`
     flex-direction: column;
     height: auto;
     align-items: flex-start;
-    position: relative; /* 오타 수정 */
+    position: relative;
     max-width: 100vw;
   }
 
@@ -57,7 +61,7 @@ const headerInStyle = css`
 
     img {
       margin-left: 6.8px;
-      transform: scale(1.3);
+      transform: scale(1.2);
     }
   }
 `;
@@ -70,6 +74,7 @@ const navStyle = css`
     gap: 32px;
     height: 100%;
     margin-right: 30px;
+    align-items: center;
 
     @media all and (max-width: 1200px) {
       margin-right: 0;
@@ -78,13 +83,6 @@ const navStyle = css`
 
     @media all and (max-width: 760px) {
       flex-direction: column;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-in-out;
-
-      &.isMobile {
-        max-height: 420px;
-      }
     }
   }
 
@@ -92,20 +90,17 @@ const navStyle = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 98%;
 
     @media all and (max-width: 760px) {
       width: 100%;
-      height: auto;
       justify-content: flex-start;
-    }
-
-    &:last-child {
-      padding-bottom: 1em;
+      &:last-child {
+        padding-bottom: 1em;
+      }
     }
 
     a {
-      padding: 0.75em 0.625em;
+      padding: 0.858em 0.625em;
       font-size: 0.875rem;
       color: #fff;
       border-radius: 8px;
@@ -217,7 +212,7 @@ const Header = () => {
           )}
 
           <nav css={navStyle}>
-            <ul className={navToggle ? "header_ul isMobile" : "header_ul"}>
+            <ul className="header_ul">
               {navInfo.map((item, index) => {
                 return (
                   <li key={index}>
