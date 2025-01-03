@@ -1,6 +1,6 @@
 import GridBox from "./GridBox";
 import "@/app/globals.css";
-import { officeList } from "@/app/pages/main/components/Corporation";
+import { officeList } from "@/app/common/commondata";
 
 export default {
   title: "Components/GridBox",
