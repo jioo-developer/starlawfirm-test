@@ -40,7 +40,7 @@ const Style = css`
   padding: 20px;
   p,
   span {
-    color: #888;
+    color: #888 !important;
   }
 `;
 

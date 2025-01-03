@@ -31,9 +31,16 @@ const Style = css`
   width: 300px;
   height: 400px;
   padding: 20px;
+  box-sizing: border-box;
+  background: #f4f4f4;
+
+  article {
+    width: 100% !important;
+  }
 
   figure {
-    opacity: 1;
+    opacity: 1 !important;
+    width: 100% !important;
   }
 
   p,

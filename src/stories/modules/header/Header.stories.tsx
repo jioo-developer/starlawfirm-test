@@ -14,7 +14,7 @@ export default {
 
 const style = css`
   position: fixed;
-  background: #333;
+  background: #bebebe;
   width: 100%;
   height: 60px;
   display: flex;
