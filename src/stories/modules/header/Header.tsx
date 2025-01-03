@@ -3,7 +3,7 @@
 import { css } from "@emotion/react";
 import Link from "next/link";
 import useScroll from "@/app/hooks/useScroll";
-import useMediaQuery from "@/app/hooks/jseMediaQuery";
+import useMediaQuery from "@/app/hooks/useMediaQuery";
 import Image from "next/image";
 import { useState } from "react";
 

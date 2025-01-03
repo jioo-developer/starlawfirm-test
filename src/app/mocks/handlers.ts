@@ -69,7 +69,6 @@ export const handlers = [
   http.get("/NoticeData", ({ request }) => {
     const url = new URL(request.url);
     const page = url.searchParams.get("params");
-    console.log(page);
     const pageSize = 5; // 한 페이지에 보여줄 데이터 수
     const currentPage = parseInt(page || "1", 10); // id가 없으면 기본값 1로 설정
     const startIndex = (currentPage - 1) * pageSize;

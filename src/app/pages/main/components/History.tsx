@@ -1,6 +1,6 @@
 import HistoryMap from "@/stories/modules/historyMap/vertical/HistoryMap";
 import { showStore } from "@/app/store/common";
-import useMediaQuery from "@/app/hooks/jseMediaQuery";
+import useMediaQuery from "@/app/hooks/useMediaQuery";
 import HorizontalMap from "@/stories/modules/historyMap/horizontal/HorizontalMap";
 
 const History = () => {

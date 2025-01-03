@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { showStore, useScrollStore } from "@/app/store/common";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { throttle } from "@/app/handler/common";
 
 const TeamMission = () => {
@@ -45,7 +45,9 @@ const TeamMission = () => {
       }
     }
   };
-  const throttleScroll = throttle(scrollHandler, 250);
+  const throttleScroll = useCallback(() => {
+    throttle(scrollHandler, 250);
+  }, []);
   // 스크롤 이벤트 이기 때문에 이벤트 중첩을 방지하기 위해 쓰로틀 처리
 
   useEffect(() => {
