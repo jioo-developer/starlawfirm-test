@@ -1,3 +1,3 @@
-export const Page: React.FC = () => {
+export const Page = () => {
   return <article></article>;
 };

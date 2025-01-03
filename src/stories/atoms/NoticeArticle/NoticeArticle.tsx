@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import Image from "next/image";
 import { css } from "@emotion/react";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { throttle } from "@/app/handler/common";
 
 type stylePropsType = {
@@ -102,7 +102,9 @@ const NoticeArticle = ({
     }
   };
 
-  const throttleHandler = throttle(articleIfnoSetting, 300);
+  const throttleHandler = useCallback(() => {
+    throttle(articleIfnoSetting, 300);
+  }, []);
 
   return (
     <article
