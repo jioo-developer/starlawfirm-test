@@ -1,8 +1,9 @@
-import "@/stories/modules/footer/footer.scss";
+import { Style } from "./Style";
 
+/** @jsxImportSource @emotion/react */
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" css={Style}>
       <div className="footer-container">
         <div className="footer-column">
           <p>서비스</p>

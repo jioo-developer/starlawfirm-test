@@ -1,8 +1,5 @@
-"use client";
-import React from "react";
-
 const ErrorPage = () => {
-  return <div id="notfound"></div>;
+  return <div id="notfound">에러페이지</div>;
 };
 
 export default ErrorPage;

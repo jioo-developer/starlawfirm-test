@@ -1,4 +1,6 @@
-.pagination {
+import { css } from "@emotion/react";
+
+export const Style = css`
   display: flex;
   align-items: center;
   gap: 10px;
@@ -31,6 +33,7 @@
       width: 28px;
       height: 23px;
     }
+
     button {
       width: 100%;
     }
@@ -49,22 +52,22 @@
       color: #999;
     }
   }
-}
 
-.page-link {
-  text-decoration: none;
-  color: #555;
-  font-size: 1rem;
-}
+  .page-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 1rem;
+  }
 
-.pagination button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1.125rem;
-  color: #555;
-}
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.125rem;
+    color: #555;
 
-.pagination button:focus {
-  outline: none;
-}
+    &:focus {
+      outline: none;
+    }
+  }
+`;

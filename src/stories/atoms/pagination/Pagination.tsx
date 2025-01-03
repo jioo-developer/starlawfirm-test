@@ -1,5 +1,6 @@
-import "@/stories/atoms/pagination/pagination.scss";
+import { Style } from "./Style";
 
+/** @jsxImportSource @emotion/react */
 type propsType = {
   page: number;
   handler: (page: number) => void;
@@ -7,7 +8,7 @@ type propsType = {
 
 const Pagination = ({ page, handler }: propsType) => {
   return (
-    <div className="pagination">
+    <div className="pagination" css={Style}>
       <button className="prev" style={{ opacity: page === 1 ? "0.2" : 1 }}>
         &lt;
       </button>
