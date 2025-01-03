@@ -1,4 +1,4 @@
-import { officeList } from "@/app/common/commondata";
+import { officeList } from "@/app/common/data/commondata";
 import GridBox from "@/stories/atoms/GridBox";
 import { useInView } from "react-intersection-observer";
 

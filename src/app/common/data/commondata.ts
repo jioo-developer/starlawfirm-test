@@ -71,3 +71,11 @@ export const newsList = [
 ];
 
 // 뉴스 데이터
+
+export const statistList = [
+  { label: "월간 활성 사용자", value: "1,910만" },
+  { label: "누적 가입자 수", value: "2,800만" },
+  { label: "서비스 수", value: "100개" },
+];
+
+// 서비스 규모에 대한 데이터

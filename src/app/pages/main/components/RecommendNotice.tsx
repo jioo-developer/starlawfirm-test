@@ -1,4 +1,4 @@
-import { newsList } from "@/app/common/commondata";
+import { newsList } from "@/app/common/data/commondata";
 import { overlapHandler, throttle } from "@/app/handler/common";
 import { useScrollStore } from "@/app/store/common";
 import { Button } from "@/stories/atoms/Button";
