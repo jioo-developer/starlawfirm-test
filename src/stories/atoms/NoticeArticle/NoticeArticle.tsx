@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import Image from "next/image";
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { throttle } from "@/app/handler/common";
-import { articleStyle, stylePropsType } from "./verticalStyle";
+import { articleStyle, stylePropsType } from "./VerticalStyle";
 interface newType extends stylePropsType {
   items: { type: string; title: string; date: string };
   index: number;
@@ -39,9 +39,7 @@ const NoticeArticle = ({
     }
   };
 
-  const throttleHandler = useCallback(() => {
-    throttle(articleIfnoSetting, 300);
-  }, []);
+  const throttleHandler = throttle(articleIfnoSetting, 300);
 
   return (
     <article

@@ -1,6 +1,8 @@
+/** @jsxImportSource @emotion/react */
+"use client";
+
 import { Style } from "./Style";
 
-/** @jsxImportSource @emotion/react */
 type propsType = {
   page: number;
   handler: (page: number) => void;

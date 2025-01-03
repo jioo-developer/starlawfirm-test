@@ -3,7 +3,7 @@ import { overlapHandler, throttle } from "@/app/handler/common";
 import { useScrollStore } from "@/app/store/common";
 import { Button } from "@/stories/atoms/Button";
 import NoticeArticle from "@/stories/atoms/NoticeArticle/NoticeArticle";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type RefArrayType = {
   topvalue: number;
@@ -67,9 +67,7 @@ const RecommendNotice = () => {
     }
   };
 
-  const throttleScroll = useCallback(() => {
-    throttle(scrollHandler, 250);
-  }, []);
+  const throttleScroll = throttle(scrollHandler, 250);
   // 스크롤 이기 때문에 쓰로틀을 적용해서 이벤트 중첩을 방지
   useEffect(() => {
     throttleScroll();

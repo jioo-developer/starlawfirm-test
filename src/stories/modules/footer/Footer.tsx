@@ -1,6 +1,7 @@
+/** @jsxImportSource @emotion/react */
+"use client";
 import { Style } from "./Style";
 
-/** @jsxImportSource @emotion/react */
 const Footer = () => {
   return (
     <footer className="footer" css={Style}>
